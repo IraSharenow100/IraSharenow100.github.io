@@ -24,3 +24,7 @@ Analysis of pension debt trends across California cities, focusing on El Cerrito
 📬 **About Me**
 
 I’m Ira Sharenow, a data analyst focused on turning complex public datasets into accessible, actionable insights. You can view my résumé and project links on my [GitHub profile](https://github.com/IraSharenow100).
+---
+
+📫 **Contact**  
+You can reach me at [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)
