@@ -39,5 +39,5 @@ You can reach me at [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)
 ### 🔗 Connect with Me
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/IraSharenow100)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ira-sharenow/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/irasharenow)
 
