@@ -4,6 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
+
 ## 👋 About Me
 
 I’m **Ira Sharenow**, a data analyst based in El Cerrito, California.
