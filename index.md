@@ -2,6 +2,14 @@
 layout: default
 title: Ira Sharenow’s Data Blog
 ---
+---
+
+### 📌 Site Navigation
+
+- [Home](/)
+- [About Me](/about/)
+- [CalPERS UAL Blog Post](/calpers-ual-analysis/)
+
 
 Welcome to my data-driven blog, built with Jekyll and GitHub Pages.  
 I use this site to share public-facing analyses on topics related to local government, public finance, and emergency services — all grounded in real data.
