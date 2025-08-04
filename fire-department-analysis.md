@@ -4,10 +4,12 @@ title: "New Analysis: El Cerrito–Kensington Fire Department Incident Patterns 
 permalink: /fire-department-analysis/
 date: 2025-08-04
 ---
+*By Ira Sharenow – August 4, 2025*
 
 After months of public records review, data cleaning, and advanced analysis in RStudio, I’ve published a new report on **fire and emergency activity** in **El Cerrito and Kensington**. The findings offer insights into how our fire department is responding to local needs and where resources may be best directed.
 
-📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://irasharenow100.github.io/fire-department-analysis)
+📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)
+
 
 ---
 
@@ -56,5 +58,5 @@ The chart below shows how much heavier the workload is at Station 51 compared to
 
 As a data analyst with a background in mathematics, real estate, and marketing, I believe that civic data should be **understandable, transparent, and actionable**. This blog is part of my effort to bring useful insights to light — and to demonstrate how public records and modern analytics can work together.
 
-🔗 **Read the full report**: [https://irasharenow100.github.io/fire-department-analysis](https://irasharenow100.github.io/fire-department-analysis)  
+🔗 **Read the full report**: 📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report
 🔗 **See all my projects**: [https://irasharenow100.github.io](https://irasharenow100.github.io)
