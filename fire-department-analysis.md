@@ -3,9 +3,8 @@ layout: post
 title: "New Analysis: El Cerrito–Kensington Fire Department Incident Patterns Reveal Key Insights"
 permalink: /fire-department-analysis/
 date: 2025-08-04
+author: Ira Sharenow
 ---
-*By Ira Sharenow – August 4, 2025*
-
 After months of public records review, data cleaning, and advanced analysis in RStudio, I’ve published a new report on **fire and emergency activity** in **El Cerrito and Kensington**. The findings offer insights into how our fire department is responding to local needs and where resources may be best directed.
 
 📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)
