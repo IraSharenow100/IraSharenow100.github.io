@@ -58,5 +58,5 @@ The chart below shows how much heavier the workload is at Station 51 compared to
 
 As a data analyst with a background in mathematics, real estate, and marketing, I believe that civic data should be **understandable, transparent, and actionable**. This blog is part of my effort to bring useful insights to light — and to demonstrate how public records and modern analytics can work together.
 
-🔗 **Read the full report**: 📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)
+🔗 **Read the full report**: 📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)   
 🔗 **See all my projects**: [https://irasharenow100.github.io](https://irasharenow100.github.io)
