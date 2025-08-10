@@ -3,6 +3,7 @@ layout: post
 title: "El Cerrito Police Incident Analysis (2019–2025)"
 date: 2025-08-10
 permalink: /police-incident-analysis/
+author: "Ira Sharenow"
 ---
 
 I’ve completed a detailed analysis of police incident patterns in El Cerrito using data from 2019 through March 2025.  
