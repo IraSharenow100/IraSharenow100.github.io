@@ -16,6 +16,8 @@ I use this site to share public-facing analyses on topics related to local gover
 
 ### [CalPERS Pension Liability Analysis](/calpers-ual-analysis/)
 Analysis of pension debt trends across California cities, focusing on El Cerrito’s unfunded liability.
+### [El Cerrito Budget Analysis](/el-cerrito-budget-analysis/)
+Key trends in revenues, expenditures, reserves, and pension costs; includes link to the full project repo.
 ### [Fire Department Incident Analysis](/fire-department-analysis/)
 Analysis of 20,000+ fire department calls in El Cerrito and Kensington — response times, call types, and regional trends.
 ### [El Cerrito Police Incident Analysis (2019–2025)](/police-incident-analysis/)
