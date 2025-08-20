@@ -3,7 +3,9 @@ layout: post
 title: "Fire Department Incident Analysis (El Cerrito, Kensington & Richmond, 2024)"
 permalink: /fire-department-analysis/
 date: 2025-08-20
+author: "Ira Sharenow"
 ---
+
 
 Two complementary views of the same dataset: **workload by station** and **response times by region**.
 
