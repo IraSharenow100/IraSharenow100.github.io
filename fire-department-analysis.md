@@ -1,61 +1,33 @@
 ---
 layout: post
-title: "New Analysis: El Cerrito–Kensington Fire Department Incident Patterns Reveal Key Insights"
+title: "Fire Department Incident Analysis (El Cerrito, Kensington & Richmond, 2024)"
 permalink: /fire-department-analysis/
-date: 2025-08-04
-author: Ira Sharenow
----
-After months of public records review, data cleaning, and advanced analysis in RStudio, I’ve published a new report on **fire and emergency activity** in **El Cerrito and Kensington**. The findings offer insights into how our fire department is responding to local needs and where resources may be best directed.
-
-📄 **Full Report**: [El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)
-
-
+date: 2025-08-20
 ---
 
-## 🔥 Key Takeaways
+Two complementary views of the same dataset: **workload by station** and **response times by region**.
 
-- **Station 51**, near El Cerrito Plaza, handles **about 4× the workload** of the other stations.
-- **Medical emergencies (Code 321)** are the largest single category — making up **over one-third** of all calls.
-- **Incident hotspots** cluster around the **Del Norte and Plaza BART stations**.
-- **Response times are fastest in El Cerrito West**, slower in **El Cerrito East and Kensington**.
-- No strong **seasonal variation** — incident volume stays relatively stable month-to-month.
+## Part 1 — Workload by Station
+**Key takeaway:** Richmond stations handle a much heavier average workload than El Cerrito/Kensington stations.
+
+![Station Counts (bar chart by station)](https://raw.githubusercontent.com/IraSharenow100/el-cerrito-fire-report/main/bar_incident_counts_by_station.png)
+
+**Full report (Word):**  
+[El Cerrito–Richmond Fire Data Analysis (2025‑07‑31)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El_Cerrito_Richmond_FD_Analysis_20250731.docx)
+
+> Note: In Table E3 (stations), **shaded rows (51, 52, 55)** are El Cerrito Fire Department.
 
 ---
 
-## 📊 Why This Matters
+## Part 2 — Response Times
+**Key takeaway:** Response times differ by geography: **El Cerrito West** is fastest; **Kensington** is slower (terrain/roads likely factors). Differences are statistically significant.
 
-Understanding where and when emergencies happen — and how long it takes to respond — is critical for:
+![Response Times (boxplot 0–20 minutes)](https://raw.githubusercontent.com/IraSharenow100/el-cerrito-fire-report/main/boxplot_response_times_by_region.png)
 
-- Staffing decisions  
-- Resource allocation  
-- Public safety planning  
-- Budget priorities
-
-I used real incident records from the **El Cerrito–Kensington Fire Department**, obtained via a **Public Records Act request**. Using mapping tools and statistical models, I identified clear regional trends and workload differences that can support more informed policy conversations.
+**Full report (Word):**  
+[El Cerrito–Kensington Fire Department Analysis (2025‑07‑28)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El-Cerrito-Fire-Department-Analysis-20250728.docx)
 
 ---
 
-## 📍 What’s in the Report?
-
-- Heat maps of emergency incident locations  
-- Incident counts by year, region, and type  
-- Response time statistics by city and neighborhood  
-- Total apparatus hours by station and city  
-- ANOVA and post hoc tests comparing response patterns
-
----
-
-## 📉 Station-Level Workload
-
-The chart below shows how much heavier the workload is at Station 51 compared to Stations 52 and 55 — both in total incidents and in medical calls (321 Incidents).
-
-![Incident Counts by Station and Type](/assets/images/fire-department-station-bar-chart.png)
-
----
-
-## 🧠 My Goal
-
-As a data analyst with a background in mathematics, real estate, and marketing, I believe that civic data should be **understandable, transparent, and actionable**. This blog is part of my effort to bring useful insights to light — and to demonstrate how public records and modern analytics can work together.
-
-🔗 **Read the full report**:[El Cerrito–Kensington Fire Department Analysis (2017–2024)](https://github.com/IraSharenow100/el-cerrito-fire-report)   
-🔗 **See all my projects**: [https://irasharenow100.github.io](https://irasharenow100.github.io)
+### Data & Code
+GitHub repo: [el-cerrito-fire-report](https://github.com/IraSharenow100/el-cerrito-fire-report)
