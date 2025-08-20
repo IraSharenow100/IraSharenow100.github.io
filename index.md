@@ -41,6 +41,7 @@ I’m Ira Sharenow, a data analyst focused on turning complex public datasets in
 
 📫 **Contact**  
 You can reach me at [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)
+
 ---
 
 ### 🔗 Connect with Me
