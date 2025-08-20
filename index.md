@@ -2,48 +2,46 @@
 layout: default
 title: Ira Sharenow’s Data Blog
 ---
----
 
 ### 📌 Site Navigation
-
 - [Home](/)
 - [About Me](/about/)
 
-Welcome to my data-driven blog, built with Jekyll and GitHub Pages.  
-I use this site to share public-facing analyses on topics related to local government, public finance, and emergency services — all grounded in real data.
+Welcome to my data-driven blog, built with Jekyll and GitHub Pages.
+I share public-facing analyses on local government, public finance, and emergency services — grounded in real data.
+
+# Fire Department Incident Analysis (El Cerrito, Kensington & Richmond, 2024)
+
+Two complementary views of the same dataset: **workload by station** and **response times by region**.
+
+## Part 1 — Workload by Station
+**Key takeaway:** Richmond stations handle a much heavier average workload than El Cerrito/Kensington stations.
+
+![Station Counts](https://raw.githubusercontent.com/IraSharenow100/el-cerrito-fire-report/main/bar_incident_counts_by_station.png)
+
+**Full report (Word):**
+[El Cerrito–Richmond Fire Data Analysis (2025‑07‑31)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El_Cerrito_Richmond_FD_Analysis_20250731.docx)
+
+---
+
+## Part 2 — Response Times
+**Key takeaway:** Response times differ by geography: El Cerrito West is fastest; Kensington is slower (terrain/roads likely factors).
+
+![Response Times](https://raw.githubusercontent.com/IraSharenow100/el-cerrito-fire-report/main/boxplot_response_times_by_region.png)
+
+**Full report (Word):**
+[El Cerrito–Kensington Fire Department Analysis (2025‑07‑28)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El-Cerrito-Fire-Department-Analysis-20250728.docx)
+
+---
 
 ## 🔍 Featured Projects
-
-### [CalPERS Pension Liability Analysis](/calpers-ual-analysis/)
-Analysis of pension debt trends across California cities, focusing on El Cerrito’s unfunded liability.
-### [El Cerrito Budget Analysis](/el-cerrito-budget-analysis/)
-Key trends in revenues, expenditures, reserves, and pension costs; includes link to the full project repo.
-### [Fire Department Incident Analysis](/fire-department-analysis/)
-Analysis of 20,000+ fire department calls in El Cerrito and Kensington — response times, call types, and regional trends.
-### [El Cerrito Police Incident Analysis (2019–2025)](/police-incident-analysis/)
-Citywide patterns, heat map, and a link to the full Word report.
-
+- [CalPERS Pension Liability Analysis](/calpers-ual-analysis/)
+- [El Cerrito Budget Analysis](/el-cerrito-budget-analysis/)
+- [Fire Department Incident Analysis](/fire-department-analysis/)
+- [El Cerrito Police Incident Analysis (2019–2025)](/police-incident-analysis/)
 
 ---
 
-📈 **Tools and Technologies**
+📈 **Tools & Technologies**: R (tidyverse, ggplot2, flextable) • Excel (Power Query) • Tableau • Google Maps & Geocoding • GitHub Pages & Jekyll
 
-- R (tidyverse, ggplot2, flextable)  
-- Excel (Power Query, pivot tables)  
-- Tableau  
-- Google Maps + Geocoding  
-- GitHub Pages + Jekyll
-
-📬 **About Me**
-
-I’m Ira Sharenow, a data analyst focused on turning complex public datasets into accessible, actionable insights. You can view my résumé and project links on my [GitHub profile](https://github.com/IraSharenow100).
----
-
-📫 **Contact**  
-You can reach me at [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)
----
-
-### 🔗 Connect with Me
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/IraSharenow100)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/irasharenow)
+📫 **Contact**: [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com) • GitHub: [IraSharenow100](https://github.com/IraSharenow100)
