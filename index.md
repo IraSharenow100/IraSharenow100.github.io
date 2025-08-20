@@ -44,6 +44,10 @@ Two complementary views of the same dataset: **workload by station** and **respo
 
 📈 **Tools & Technologies**: R (tidyverse, ggplot2, flextable) • Excel (Power Query) • Tableau • Google Maps & Geocoding • GitHub Pages & Jekyll
 
-**Contact**  
-[irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)  
-[GitHub Profile](https://github.com/IraSharenow100)
+📫 **Contact**  
+You can reach me at [irasharenow100@gmail.com](mailto:irasharenow100@gmail.com)
+
+🔗 **Connect with Me**  
+- [GitHub](https://github.com/IraSharenow100)  
+- [LinkedIn](https://www.linkedin.com/in/irasharenow)
+
