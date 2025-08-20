@@ -6,8 +6,7 @@ date: 2025-08-20
 author: "Ira Sharenow"
 ---
 
-
-Two complementary views of the same dataset: **workload by station** and **response times by region**.
+Two complementary views of the same dataset: **workload by station** and **response times by region**, plus a comparative summary across **Richmond vs. El Cerrito/Kensington**.
 
 ## Part 1 — Workload by Station
 **Key takeaway:** Richmond stations handle a much heavier average workload than El Cerrito/Kensington stations.
@@ -28,6 +27,18 @@ Two complementary views of the same dataset: **workload by station** and **respo
 
 **Full report (Word):**  
 [El Cerrito–Kensington Fire Department Analysis (2025‑07‑28)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El-Cerrito-Fire-Department-Analysis-20250728.docx)
+
+---
+
+## Part 3 — Richmond vs. El Cerrito (2024) — Summary Tables & Percentiles
+This companion view compares **agency-level workload** and **response-time percentiles** across Richmond and El Cerrito/Kensington.
+
+- **E3 (Grouped):** Incident totals and **average incidents per station** by agency.  
+- **E4:** Incident counts by station and **incident city** (mutual-aid patterns).  
+- **E5 / E6:** **Response-time percentiles** (25th, median, 90th, 95th) for **all incidents** and for **321 (EMS)** incidents.
+
+**Full comparison report (Word):**  
+[El Cerrito–Richmond Fire Data Analysis (2025‑07‑31)](https://github.com/IraSharenow100/el-cerrito-fire-report/raw/main/El_Cerrito_Richmond_FD_Analysis_20250731.docx)
 
 ---
 
