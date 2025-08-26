@@ -11,7 +11,7 @@ Over three decades, Madison’s single-family home market has climbed from rough
 ### Highlights
 - **Steady Appreciation:** Median prices rose fourfold since 1994; the **mean > median** throughout, reflecting right-skewed distributions.
 - **Price Intensity:** **Price per square foot** more than tripled, accelerating after 2010—consistent with supply constraints.
-- **Market Volume:** Annual sales fluctuated (~800 to >1,400). Recent softening (2022–2024) aligns with affordability pressure and rates.
+- **Market Volume:** Annual sales fluctuated (~1850 to > 2,700). Recent softening (2022–2024) aligns with affordability pressure and rates.
 - **Size Inflation:** Median finished square feet increased by ~**400 sq ft** over 30 years.
 - **Stable Composition:** **3-bedroom homes** consistently make up ~45–50% of transactions.
 
