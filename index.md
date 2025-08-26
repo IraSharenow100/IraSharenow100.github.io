@@ -12,7 +12,15 @@ title: Ira Sharenow’s Data Blog
 Welcome to my data-driven blog, built with Jekyll and GitHub Pages.  
 I use this site to share public-facing analyses on topics related to local government, public finance, and emergency services — all grounded in real data.
 
-## 🔍 Featured Projects
+## [Madison Home Price Appreciation (1994–2024)](/madison-home-price-appreciation/)
+
+This is the first in a **multi-part series** analyzing Madison area single-family home sales.  
+Report 1 focuses on the City of Madison from 1994–2024, covering price appreciation, home size, market intensity, and recent affordability pressures.  
+
+---
+
+
+## 🔍 Additional Featured Projects
 
 ### [CalPERS Pension Liability Analysis](/calpers-ual-analysis/)
 Analysis of pension debt trends across California cities, focusing on El Cerrito’s unfunded liability.
