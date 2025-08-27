@@ -12,17 +12,13 @@ title: Ira Sharenow’s Data Blog
 Welcome to my data-driven blog, built with Jekyll and GitHub Pages.  
 I use this site to share public-facing analyses on topics related to local government, public finance, and emergency services — all grounded in real data.
 
-## 🏡 Madison Housing Project – Report 1 (1994–2024)
+## Madison Housing Project
 
-This post launches a **multi-part series** on single-family home sales in the Madison, Wisconsin area.  
-- **Report 1 (this post):** Focuses on the City of Madison from 1994–2024 — long-term price appreciation, changes in home size, price-per-square-foot trends, and recent affordability pressures.  
-- **Coming soon:** Reports on surrounding suburban markets, neighborhood-level differences, and a repeat-sales (Case-Shiller style) analysis.
+### [Report 1: City of Madison (1994–2024)](/madison-home-price-appreciation/)
+Baseline analysis focused on Madison proper, covering price appreciation, home size, market intensity, and affordability pressures.
 
-📄 **Read Report 1 here:** [Madison Home Price Appreciation (1994–2024)](/madison-home-price-appreciation/)
-
----
-### [Madison Housing Project – Report 2 (1994–2024)](/madison-area-report2/)
-Expanded analysis covering Madison and suburban markets, highlighting price, size, and market intensity differences.
+### [Report 2: Madison + Suburbs (1994–2024)](/madison-area-report2/)
+Expanded analysis including suburban communities, highlighting price premiums, larger home sizes, and stable long-term appreciation.
 
 
 ---
