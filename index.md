@@ -21,6 +21,8 @@ This post launches a **multi-part series** on single-family home sales in the Ma
 📄 **Read Report 1 here:** [Madison Home Price Appreciation (1994–2024)](/madison-home-price-appreciation/)
 
 ---
+### [Madison Housing Project – Report 2 (1994–2024)](/madison-area-report2/)
+Expanded analysis covering Madison and suburban markets, highlighting price, size, and market intensity differences.
 
 
 ---
