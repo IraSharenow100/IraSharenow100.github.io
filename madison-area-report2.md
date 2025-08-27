@@ -9,11 +9,11 @@ author: "Ira Sharenow"
 This is the second in my multi-part series analyzing Madison-area single-family home sales.  
 While **Report 1** focused only on the City of Madison, **Report 2** expands the scope to include surrounding suburban communities.
 
-![Sales Distribution by Bedroom Count](sales_distribution_by_bedroom.png)
+![Sales Distribution by Bedroom Count](https://irasharenow100.github.io/bedroom_distribution_chart.png)
 
 **Files:**
-- [📄 PDF Report](proj2_mad_area_hist.pdf)  
-- [📝 R Markdown](proj2_mad_area_hist.Rmd)
+- [📄 PDF Report](https://irasharenow100.github.io/proj2_mad_area_hist.pdf)  
+- [📝 R Markdown](https://irasharenow100.github.io/proj2_mad_area_hist.Rmd)
 
 **Key Highlights:**
 - Suburban homes average **200–300 sq ft larger** than Madison homes  
