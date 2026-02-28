@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Cerrito Library Tax: Financial Analysis</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #fff; color: #111; font-size: 16px; line-height: 1.6; }
+
+.site-header { background: #1a4480; color: #fff; padding: 26px 32px 20px; }
+.site-header h1 { font-size: clamp(18px, 2.8vw, 30px); font-weight: bold; margin-bottom: 7px; }
+.site-header p { font-size: 15px; color: #c8d8f0; max-width: 800px; line-height: 1.65; }
+.analyst-note { margin-top: 9px; font-size: 12px; color: #8aaad4; font-family: Arial, sans-serif; }
+
+.main { max-width: 980px; margin: 0 auto; padding: 0 28px 60px; }
+
+.framing { background: #f0f4fa; border-left: 5px solid #1a4480; padding: 13px 18px; margin: 18px 0 0; }
+.framing h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; font-family: Arial, sans-serif; color: #1a4480; margin-bottom: 4px; }
+.framing p { font-size: 14px; color: #333; line-height: 1.7; font-family: Arial, sans-serif; }
+
+/* TABS */
+.tab-bar { display: flex; flex-wrap: wrap; gap: 4px; margin: 16px 0 0; border-bottom: 3px solid #1a4480; }
+.tab-btn { font-family: Arial, sans-serif; font-size: 13px; padding: 7px 13px; border: 1px solid #ccc; border-bottom: none; background: #f4f4f4; color: #444; cursor: pointer; border-radius: 3px 3px 0 0; }
+.tab-btn:hover { background: #dce8f8; color: #1a4480; }
+.tab-btn.active { background: #1a4480; color: #fff; border-color: #1a4480; font-weight: bold; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* SCENARIO STRIP */
+.scenario-strip { background: #f8f8f8; border: 1px solid #ddd; padding: 13px 16px; margin: 12px 0 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+.scenario-strip h2 { font-size: 18px; color: #111; }
+.scenario-desc { font-family: Arial, sans-serif; font-size: 13px; color: #555; max-width: 600px; line-height: 1.55; margin-top: 4px; }
+.result-badge { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; padding: 7px 14px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+.badge-fail { background: #fdecea; color: #b91c1c; border: 2px solid #f5a5a5; }
+.badge-warn { background: #fff8e1; color: #92400e; border: 2px solid #fcd34d; }
+
+/* CHARTS */
+.chart-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 0 0 10px; }
+.chart-box { background: #fff; border: 1px solid #ddd; padding: 12px; }
+.chart-box h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: #555; margin-bottom: 8px; }
+.chart-box canvas { display: block; width: 100% !important; }
+
+/* CHART LEGEND */
+.chart-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.legend-item { display: flex; align-items: center; gap: 4px; font-family: Arial, sans-serif; font-size: 11px; color: #444; }
+.legend-swatch { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* KEY NUMBERS */
+.key-number-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0 0 10px; }
+.key-num { background: #fff; border: 1px solid #ddd; padding: 11px 12px; text-align: center; }
+.kn-label { font-family: Arial, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: #666; margin-bottom: 3px; }
+.kn-value { font-size: 19px; font-weight: bold; line-height: 1.2; }
+.kn-note  { font-family: Arial, sans-serif; font-size: 10px; color: #888; margin-top: 2px; font-style: italic; }
+.kn-red   { color: #b91c1c; }
+.kn-blue  { color: #1a4480; }
+.kn-green { color: #166534; }
+.kn-amber { color: #92400e; }
+
+/* ASSUMPTIONS */
+.assumptions-box { background: #f8f8f8; border: 1px solid #ddd; padding: 11px 14px; margin-bottom: 10px; }
+.assumptions-box h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #555; margin-bottom: 7px; }
+.assumptions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ai { background: #fff; border: 1px solid #e0e0e0; padding: 8px 10px; }
+.ai .al { font-family: Arial, sans-serif; font-size: 10px; color: #777; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1px; }
+.ai .av { font-size: 14px; font-weight: bold; color: #111; }
+.ai .an { font-family: Arial, sans-serif; font-size: 10px; color: #888; font-style: italic; }
+
+/* TAX ESCALATION */
+.tax-esc-box { background: #fff9f0; border: 1px solid #f0c060; border-left: 5px solid #e07b00; padding: 11px 14px; margin-bottom: 10px; }
+.tax-esc-box h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #92400e; margin-bottom: 7px; }
+.tax-esc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.te-cell { background: #fff; border: 1px solid #e8c080; padding: 8px; text-align: center; }
+.te-cell .tel { font-family: Arial, sans-serif; font-size: 11px; color: #888; margin-bottom: 2px; }
+.te-cell .tev { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; color: #92400e; }
+.te-cell .ter { font-family: Arial, sans-serif; font-size: 10px; color: #666; }
+.tax-esc-note { font-family: Arial, sans-serif; font-size: 12px; color: #666; margin-top: 7px; }
+
+/* CREDIT BOX */
+.credit-box { background: #fff; border: 1px solid #ddd; border-left: 5px solid #1a4480; padding: 11px 14px; margin-bottom: 10px; }
+.credit-box h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #1a4480; margin-bottom: 7px; }
+.credit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.credit-item { font-family: Arial, sans-serif; font-size: 13px; color: #333; line-height: 1.6; }
+.ci-label { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: #888; margin-bottom: 2px; }
+.ci-val { font-size: 14px; font-weight: bold; }
+
+/* GF PHASES */
+.gf-section { margin-bottom: 10px; }
+.gf-section h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #1a4480; margin-bottom: 7px; border-bottom: 2px solid #1a4480; padding-bottom: 3px; }
+.gf-phases { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid #ddd; }
+.gf-phase { padding: 12px 14px; }
+.gf-phase:not(:last-child) { border-right: 1px solid #ddd; }
+.gf-phase-label { font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+.gf-phase-amount { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+.gf-phase-text { font-family: Arial, sans-serif; font-size: 13px; color: #333; line-height: 1.55; }
+.phase-a { background: #eff6ff; }
+.phase-a .gf-phase-label, .phase-a .gf-phase-amount { color: #1e40af; }
+.phase-b { background: #fff8e1; }
+.phase-b .gf-phase-label, .phase-b .gf-phase-amount { color: #92400e; }
+.phase-c { background: #fef2f2; }
+.phase-c .gf-phase-label, .phase-c .gf-phase-amount { color: #991b1b; }
+
+/* MATH BOX */
+.math-box { background: #fff8e1; border: 1px solid #fcd34d; border-left: 5px solid #f59e0b; padding: 13px 16px; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.85; }
+.math-box strong { color: #92400e; }
+
+/* RISK BOX */
+.risk-box { background: #fef9f0; border: 1px solid #e8c080; padding: 12px 16px; margin-bottom: 10px; }
+.risk-box h3 { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #92400e; margin-bottom: 8px; }
+.risk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.risk-item { background: #fff; border: 1px solid #e8c080; padding: 11px 13px; }
+.ri-title { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #7c2d00; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.ri-impact { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: #b91c1c; margin-bottom: 3px; }
+.ri-text { font-family: Arial, sans-serif; font-size: 12px; color: #444; line-height: 1.55; }
+
+/* FOOTNOTE */
+.footnote { font-family: Arial, sans-serif; font-size: 12px; color: #666; border-top: 1px solid #ddd; padding-top: 9px; margin-top: 4px; line-height: 1.65; }
+.footnote strong { color: #333; }
+
+/* SUMMARY */
+.summary-wrap { margin-top: 34px; }
+.summary-wrap h2 { font-size: 18px; border-bottom: 3px solid #1a4480; padding-bottom: 5px; margin-bottom: 11px; }
+table.summary { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.summary th { font-family: Arial, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: #555; background: #f0f4fa; padding: 8px 10px; border: 1px solid #ddd; text-align: left; }
+table.summary td { padding: 9px 10px; border: 1px solid #ddd; font-family: Arial, sans-serif; color: #333; vertical-align: top; }
+table.summary tr:nth-child(even) td { background: #fafafa; }
+.td-red   { color: #b91c1c; font-weight: bold; }
+.td-amber { color: #92400e; font-weight: bold; }
+.td-name  { font-weight: bold; color: #111; }
+.summary-note { font-family: Arial, sans-serif; font-size: 12px; color: #777; margin-top: 9px; line-height: 1.7; }
+
+@media (max-width: 700px) {
+  .main { padding-left: 12px; padding-right: 12px; }
+  .chart-row, .key-number-row, .assumptions-grid, .gf-phases, .credit-grid, .risk-grid, .tax-esc-grid { grid-template-columns: 1fr; }
+  .gf-phase:not(:last-child) { border-right: none; border-bottom: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <h1>El Cerrito Library Tax: How Does It Affect City Finances?</h1>
+  <p>A data analysis of six financial scenarios for the proposed 17¢/sq ft parcel tax on the June 2026 ballot. Each scenario states its assumptions explicitly, then follows the arithmetic wherever it leads.</p>
+  <div class="analyst-note">Analysis: Ira Sharenow, El Cerrito &nbsp;·&nbsp; Developed in collaboration with Claude (Anthropic) &nbsp;·&nbsp; Sources: City §9212 Impact Report (Feb. 19, 2026); Nov. 2023 City Council presentation; Griffin Structures cost estimates</div>
+</div>
+
+<div class="main">
+
+<div class="framing">
+  <h2>Analyst's note</h2>
+  <p>I am a data analyst. My method: state the assumptions explicitly, then follow the math. Six scenarios range from the city's original 2023 baseline to a reverse calculation of what this tax can actually afford to build. We assume the project proceeds as quickly as possible. The key question: does the money add up? In five of six scenarios, it does not. In every scenario, the General Fund absorbs a permanent and growing burden after year 10.</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="show(0)">S1 · 2023 Baseline</button>
+  <button class="tab-btn" onclick="show(1)">S2 · Worst Case</button>
+  <button class="tab-btn" onclick="show(2)">S3 · Mid-Range</button>
+  <button class="tab-btn" onclick="show(3)">S4 · Optimistic</button>
+  <button class="tab-btn" onclick="show(4)">S5 · Cost Escalation</button>
+  <button class="tab-btn" onclick="show(5)">S6 · What Can We Afford?</button>
+</div>
+
+<!-- ══ S1 ══ -->
+<div class="panel active" id="p0">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 1 · The 2023 Baseline</h2>
+      <div class="scenario-desc">Uses the original November 2023 projections as a starting point — the numbers presented to voters when the petition was circulated. Revenue and operating estimates are from 2023. Construction cost is the current 2026 figure of $37.2M — a 77% increase from what voters saw.</div>
+    </div>
+    <div class="result-badge badge-fail">✗ Initial Shortfall: −$821,475/yr</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Year 1: Money In vs. Money Out</h3><canvas id="c0a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Revenue</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Debt Service</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Operations</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#555"></div>Total Cost</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Operating Cost Growth (3%/yr)</h3><canvas id="c0b" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Annual Operating Cost</div></div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c0c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Initial Tax Revenue</div><div class="kn-value kn-blue">$2,500,000</div><div class="kn-note">Nov. 2023 city estimate</div></div>
+    <div class="key-num"><div class="kn-label">Annual Debt Service</div><div class="kn-value kn-red">$2,421,475</div><div class="kn-note">Fixed for 30 years</div></div>
+    <div class="key-num"><div class="kn-label">Initial Annual Shortfall</div><div class="kn-value kn-red">−$821,475</div><div class="kn-note">Grows as operating costs rise 3%/yr</div></div>
+    <div class="key-num"><div class="kn-label">Year-10 Shortfall (est.)</div><div class="kn-value kn-red">−$988,000</div><div class="kn-note">Operating costs ~$1.21M at 3%/yr</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Construction Cost</div><div class="av">$37,200,000</div><div class="an">Jan. 2026 city estimate</div></div>
+      <div class="ai"><div class="al">Bond Rate / Term</div><div class="av">5.0% / 30 yrs</div><div class="an">City Impact Report assumption</div></div>
+      <div class="ai"><div class="al">Annual Debt Service</div><div class="av">$2,421,475</div><div class="an">PMT function; fixed payment</div></div>
+      <div class="ai"><div class="al">Initial Tax Revenue</div><div class="av">$2,500,000</div><div class="an">Nov. 2023 city projection</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$900,000</div><div class="an">Nov. 2023 city estimate</div></div>
+      <div class="ai"><div class="al">Operating Cost Growth</div><div class="av">3%/yr</div><div class="an">Applied to all scenarios</div></div>
+    </div>
+  </div>
+  <div class="tax-esc-box">
+    <h3>What a 2,000 sq ft Homeowner Pays — If Tax Rate Grows 5%/Year</h3>
+    <div class="tax-esc-grid">
+      <div class="te-cell"><div class="tel">Year 1</div><div class="tev">$340</div><div class="ter">17.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 5</div><div class="tev">$413</div><div class="ter">20.7¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 10</div><div class="tev">$527</div><div class="ter">26.4¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 20</div><div class="tev">$859</div><div class="ter">43.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 30</div><div class="tev">$1,399</div><div class="ter">70.0¢/sf</div></div>
+    </div>
+    <div class="tax-esc-note">The ballot measure allows the maximum tax rate to increase annually by the greater of Bay Area CPI or California per capita income growth. This table assumes 5%/yr. No voter approval is required for these increases. The 30-year clock does not start until bonds are issued.</div>
+  </div>
+  <div class="credit-box">
+    <h3>Bond Credit Rating &amp; General Fund Implications</h3>
+    <div class="credit-grid">
+      <div class="credit-item">
+        <div class="ci-label">Goal: A-Rated Bond at 5%</div>
+        <p>An A rating requires a Debt Service Coverage Ratio (DSCR) of at least 1.25×. The ballot initiative caps the tax at 115% of costs — structurally preventing an A rating from tax revenue alone.</p><br>
+        <div class="ci-label">GF subsidy needed annually to achieve A rating</div>
+        <div class="ci-val kn-red">~$527,000/yr</div>
+        <div style="font-size:11px;color:#666;font-family:Arial,sans-serif;">1.25× DSCR requires $3,026,844 revenue. Tax provides $2,500,000. Gap = $526,844.</div>
+      </div>
+      <div class="credit-item">
+        <div class="ci-label">If AA Bonds Were Achievable (~4.4%)</div>
+        <p>AA bonds at ~4.4% would save about <strong>$221,000/year</strong> vs. 5% bonds — $6.6M over 30 years. But AA requires DSCR ≥ 1.5×, which this tax cannot produce. AA is not achievable under this structure.</p><br>
+        <div class="ci-label">Realistic rating given 1.15× structural cap</div>
+        <div class="ci-val kn-amber">Below Investment Grade</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact: Three Phases</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction (Starts ASAP)</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">GF currently pays library O&amp;M. Tax collections begin December 2026 and go to planning and administration. We assume the project proceeds as fast as possible.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">$821K+ gap, growing each year</div>
+        <div class="gf-phase-text">Tax covers debt service but falls short from day one. The 3%/yr operating cost escalation widens the gap every year. By year 10, the annual shortfall reaches ~$988K.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$900K → $1.21M/yr and rising</div>
+        <div class="gf-phase-text">The 10-year operating authorization expires. All operating costs — grown from $900K to over $1.21M — revert permanently to the General Fund. That is a 7.7× increase over today's $157,615.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Key point:</strong> This scenario uses the November 2023 numbers as a baseline for comparison. The construction cost shown ($37.2M) is the 2026 figure — a 77% increase from what voters saw when they signed the petition. Later scenarios use updated revenue and operating estimates.</div>
+</div>
+
+<!-- ══ S2 ══ -->
+<div class="panel" id="p1">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 2 · Worst Case</h2>
+      <div class="scenario-desc">Note: despite the label, the financial outcome here is actually better than Scenario 1 — because our independently confirmed revenue estimate ($2,700,000) exceeds the city's 2023 figure. "Worst case" refers to using the highest operating cost estimates from the §9212 Impact Report.</div>
+    </div>
+    <div class="result-badge badge-fail">✗ Initial Shortfall: −$621,475/yr</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Year 1: Money In vs. Money Out</h3><canvas id="c1a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Revenue</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Debt Service</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Operations</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#555"></div>Total Cost</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Operating Cost Growth (3%/yr)</h3><canvas id="c1b" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Annual Operating Cost</div></div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c1c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Initial Tax Revenue</div><div class="kn-value kn-blue">$2,700,000</div><div class="kn-note">Confirmed parcels; WCCUSD-aligned</div></div>
+    <div class="key-num"><div class="kn-label">Annual Debt Service</div><div class="kn-value kn-red">$2,421,475</div><div class="kn-note">Fixed for 30 years</div></div>
+    <div class="key-num"><div class="kn-label">Initial Annual Shortfall</div><div class="kn-value kn-red">−$621,475</div><div class="kn-note">Better than S1 due to higher revenue</div></div>
+    <div class="key-num"><div class="kn-label">Year-10 Shortfall (est.)</div><div class="kn-value kn-red">−$788,000</div><div class="kn-note">Operating costs ~$1.21M at 3%/yr</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Construction Cost</div><div class="av">$37,200,000</div><div class="an">Jan. 2026 city estimate</div></div>
+      <div class="ai"><div class="al">Bond Rate / Term</div><div class="av">5.0% / 30 yrs</div><div class="an">City Impact Report assumption</div></div>
+      <div class="ai"><div class="al">Annual Debt Service</div><div class="av">$2,421,475</div><div class="an">PMT function; fixed payment</div></div>
+      <div class="ai"><div class="al">Initial Tax Revenue</div><div class="av">$2,700,000</div><div class="an">Our low-end confirmed estimate</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$900,000</div><div class="an">Top of Impact Report range</div></div>
+      <div class="ai"><div class="al">Operating Cost Growth</div><div class="av">3%/yr</div><div class="an">Applied to all scenarios</div></div>
+    </div>
+  </div>
+  <div class="tax-esc-box">
+    <h3>What a 2,000 sq ft Homeowner Pays — If Tax Rate Grows 5%/Year</h3>
+    <div class="tax-esc-grid">
+      <div class="te-cell"><div class="tel">Year 1</div><div class="tev">$340</div><div class="ter">17.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 5</div><div class="tev">$413</div><div class="ter">20.7¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 10</div><div class="tev">$527</div><div class="ter">26.4¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 20</div><div class="tev">$859</div><div class="ter">43.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 30</div><div class="tev">$1,399</div><div class="ter">70.0¢/sf</div></div>
+    </div>
+    <div class="tax-esc-note">Maximum rate grows annually at the greater of Bay Area CPI or California per capita income growth. 5%/yr assumed. No voter approval required for these increases.</div>
+  </div>
+  <div class="credit-box">
+    <h3>Bond Credit Rating &amp; General Fund Implications</h3>
+    <div class="credit-grid">
+      <div class="credit-item">
+        <div class="ci-label">Revenue After Debt Service (Year 1)</div>
+        <p>$2,700,000 − $2,421,475 = <strong>$278,525</strong> remaining after debt service. Initial operating cost is $900,000. Annual gap: $621,475 — and growing 3%/yr.</p><br>
+        <div class="ci-label">GF subsidy needed annually for A rating (1.25× DSCR)</div>
+        <div class="ci-val kn-red">~$327,000/yr</div>
+      </div>
+      <div class="credit-item">
+        <div class="ci-label">AA Bond Savings (not achievable under this structure)</div>
+        <p>AA bonds at ~4.4% would save ~$221,000/yr in debt service. But the initiative's 1.15× DSCR cap makes AA structurally impossible without large GF supplements.</p><br>
+        <div class="ci-label">Realistic rating given 1.15× structural cap</div>
+        <div class="ci-val kn-amber">Below Investment Grade</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact: Three Phases</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction (Starts ASAP)</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">Tax collections begin December 2026. We assume the project moves forward as quickly as possible.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">$621K+ gap, growing each year</div>
+        <div class="gf-phase-text">Tax barely covers debt service with nothing left for operations. Even at maximum 17¢ rate, the gap persists and grows as operating costs rise 3%/yr.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$900K → $1.21M/yr and rising</div>
+        <div class="gf-phase-text">Full operating costs hit the GF permanently. No identified funding source exists. Requires new taxes or deep cuts to other city services.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Revenue note:</strong> The $2,700,000 figure is derived from independently confirmed taxable parcels, cross-referenced against WCCUSD parcel tax collection records. It is our most conservative confirmed estimate — not a hypothetical.</div>
+</div>
+
+<!-- ══ S3 ══ -->
+<div class="panel" id="p2">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 3 · Mid-Range</h2>
+      <div class="scenario-desc">Revenue between our confirmed low estimate and the city's maximum projection. Operating costs at a moderate mid-point. The most likely outcome if construction proceeds on schedule without major cost overruns.</div>
+    </div>
+    <div class="result-badge badge-fail">✗ Initial Shortfall: −$221,475/yr</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Year 1: Money In vs. Money Out</h3><canvas id="c2a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Revenue</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Debt Service</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Operations</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#555"></div>Total Cost</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Operating Cost Growth (3%/yr)</h3><canvas id="c2b" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Annual Operating Cost</div></div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c2c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Initial Tax Revenue</div><div class="kn-value kn-blue">$2,900,000</div><div class="kn-note">Mid-range estimate</div></div>
+    <div class="key-num"><div class="kn-label">Annual Debt Service</div><div class="kn-value kn-red">$2,421,475</div><div class="kn-note">Fixed for 30 years</div></div>
+    <div class="key-num"><div class="kn-label">Initial Annual Shortfall</div><div class="kn-value kn-red">−$221,475</div><div class="kn-note">Grows as operating costs rise 3%/yr</div></div>
+    <div class="key-num"><div class="kn-label">Year-10 Shortfall (est.)</div><div class="kn-value kn-red">−$388,000</div><div class="kn-note">Operating costs ~$940K at 3%/yr</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Construction Cost</div><div class="av">$37,200,000</div><div class="an">Jan. 2026 city estimate</div></div>
+      <div class="ai"><div class="al">Bond Rate / Term</div><div class="av">5.0% / 30 yrs</div><div class="an">City Impact Report assumption</div></div>
+      <div class="ai"><div class="al">Annual Debt Service</div><div class="av">$2,421,475</div><div class="an">PMT function; fixed payment</div></div>
+      <div class="ai"><div class="al">Initial Tax Revenue</div><div class="av">$2,900,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$700,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Operating Cost Growth</div><div class="av">3%/yr</div><div class="an">Applied to all scenarios</div></div>
+    </div>
+  </div>
+  <div class="tax-esc-box">
+    <h3>What a 2,000 sq ft Homeowner Pays — If Tax Rate Grows 5%/Year</h3>
+    <div class="tax-esc-grid">
+      <div class="te-cell"><div class="tel">Year 1</div><div class="tev">$340</div><div class="ter">17.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 5</div><div class="tev">$413</div><div class="ter">20.7¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 10</div><div class="tev">$527</div><div class="ter">26.4¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 20</div><div class="tev">$859</div><div class="ter">43.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 30</div><div class="tev">$1,399</div><div class="ter">70.0¢/sf</div></div>
+    </div>
+    <div class="tax-esc-note">Maximum rate grows annually at the greater of Bay Area CPI or California per capita income growth. 5%/yr assumed. No voter approval required.</div>
+  </div>
+  <div class="credit-box">
+    <h3>Bond Credit Rating &amp; General Fund Implications</h3>
+    <div class="credit-grid">
+      <div class="credit-item">
+        <div class="ci-label">Revenue vs. Total Costs (Year 1)</div>
+        <p>$2,900,000 − $2,421,475 debt − $700,000 ops = <strong>−$221,475</strong> shortfall from day one.</p><br>
+        <div class="ci-label">GF subsidy needed annually for A rating (1.25× DSCR)</div>
+        <div class="ci-val kn-red">~$127,000/yr</div>
+      </div>
+      <div class="credit-item">
+        <div class="ci-label">AA Bond Savings (not achievable)</div>
+        <p>AA at ~4.4% saves ~$221,000/yr — nearly equal to the initial shortfall. But 1.5× DSCR required for AA is structurally unachievable under this initiative without GF support.</p><br>
+        <div class="ci-label">Realistic rating given 1.15× structural cap</div>
+        <div class="ci-val kn-amber">Below Investment Grade</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact: Three Phases</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction (Starts ASAP)</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">GF pays existing library costs. Tax collected starting December 2026 for planning and construction. Fastest possible timeline assumed.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">$221K gap, growing to $388K</div>
+        <div class="gf-phase-text">Tax falls short in year 1. The 3%/yr operating cost escalation widens the gap annually. By year 10, annual shortfall reaches ~$388K.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$700K → $940K/yr and rising</div>
+        <div class="gf-phase-text">Operating costs hit GF permanently — a 6× increase over today's $157,615. Growth continues at 3%/yr with no end date.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Key observation:</strong> In the mid-range scenario, every single year produces a shortfall. The 3% operating escalation means the problem worsens over time. There is no self-correcting mechanism.</div>
+</div>
+
+<!-- ══ S4 ══ -->
+<div class="panel" id="p3">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 4 · Optimistic (Best Case)</h2>
+      <div class="scenario-desc">Uses the city's own maximum revenue projection from the §9212 Impact Report — full 17¢ rate on all taxable parcels every year. Operating costs held to the lowest plausible figure. Every assumption is chosen to favor the proposal.</div>
+    </div>
+    <div class="result-badge badge-warn">⚠ Year-1 Surplus: +$234,544 — turns to deficit ~Year 5</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Year 1: Money In vs. Money Out</h3><canvas id="c3a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Revenue</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Debt Service</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Operations</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#555"></div>Total Cost</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Annual Surplus/(Deficit) Over 10 Years</h3><canvas id="c3b" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#166534"></div>Surplus</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Deficit</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c3c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Initial Tax Revenue</div><div class="kn-value kn-blue">$3,156,019</div><div class="kn-note">City's own max · Impact Report p.18</div></div>
+    <div class="key-num"><div class="kn-label">Year-1 Surplus</div><div class="kn-value kn-green">+$234,544</div><div class="kn-note">Margin of safety: only 7.4%</div></div>
+    <div class="key-num"><div class="kn-label">Surplus Turns to Deficit</div><div class="kn-value kn-amber">~Year 5</div><div class="kn-note">As 3%/yr ops growth erodes margin</div></div>
+    <div class="key-num"><div class="kn-label">Year-10 Deficit (est.)</div><div class="kn-value kn-red">−$162,000</div><div class="kn-note">Even at best-case $500K initial ops</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Construction Cost</div><div class="av">$37,200,000</div><div class="an">Jan. 2026 city estimate</div></div>
+      <div class="ai"><div class="al">Bond Rate / Term</div><div class="av">5.0% / 30 yrs</div><div class="an">City Impact Report assumption</div></div>
+      <div class="ai"><div class="al">Annual Debt Service</div><div class="av">$2,421,475</div><div class="an">PMT function; fixed payment</div></div>
+      <div class="ai"><div class="al">Initial Tax Revenue</div><div class="av">$3,156,019</div><div class="an">City max rate, all parcels</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$500,000</div><div class="an">Optimistic low — half city's estimate</div></div>
+      <div class="ai"><div class="al">Operating Cost Growth</div><div class="av">3%/yr</div><div class="an">Applied to all scenarios</div></div>
+    </div>
+  </div>
+  <div class="tax-esc-box">
+    <h3>What a 2,000 sq ft Homeowner Pays — If Tax Rate Grows 5%/Year</h3>
+    <div class="tax-esc-grid">
+      <div class="te-cell"><div class="tel">Year 1</div><div class="tev">$340</div><div class="ter">17.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 5</div><div class="tev">$413</div><div class="ter">20.7¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 10</div><div class="tev">$527</div><div class="ter">26.4¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 20</div><div class="tev">$859</div><div class="ter">43.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 30</div><div class="tev">$1,399</div><div class="ter">70.0¢/sf</div></div>
+    </div>
+    <div class="tax-esc-note">Maximum rate grows annually at the greater of Bay Area CPI or California per capita income growth. 5%/yr assumed. No voter approval required.</div>
+  </div>
+  <div class="credit-box">
+    <h3>Bond Credit Rating — Even Best Case Has Structural Problems</h3>
+    <div class="credit-grid">
+      <div class="credit-item">
+        <div class="ci-label">Year-1 DSCR</div>
+        <p>$3,156,019 ÷ $2,421,475 = <strong>1.30×</strong> — enough for an A rating in Year 1 only. Requires maximum rate every year AND operating costs at half the city's own estimate.</p><br>
+        <div class="ci-label">GF subsidy needed for A rating — Year 1</div>
+        <div class="ci-val kn-green">Not needed — Year 1 only</div>
+      </div>
+      <div class="credit-item">
+        <div class="ci-label">The 3%/Year Deterioration Problem</div>
+        <p>Operating costs growing at 3%/yr erode the DSCR every year. By ~Year 5, total costs exceed revenue. Bond rating agencies would anticipate this deterioration at issuance.</p><br>
+        <div class="ci-label">Long-run credit rating trajectory</div>
+        <div class="ci-val kn-amber">A (Year 1) → Deteriorating</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact: Three Phases</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction (Starts ASAP)</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">Tax collected at maximum 17¢ rate starting December 2026. Project moves as fast as possible. This is the city's own best-case scenario.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">Surplus → Deficit by ~Year 5</div>
+        <div class="gf-phase-text">Starts with a $234K surplus. By year 5, operating costs reach ~$580K and total costs exceed revenue. By year 10, annual deficit is ~$162K.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$500K → $672K/yr and rising</div>
+        <div class="gf-phase-text">Best-case operating costs — grown from $500K to ~$672K — hit the GF permanently. That is a 4.3× increase over today's $157,615. This is the most favorable possible scenario.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Why optimistic is still not good enough:</strong> The 3%/yr operating cost growth is unavoidable. The initial surplus exists only in Year 1, and only if every variable is simultaneously at its best-case value. A 30-year commitment cannot rest on a 7.4% margin that disappears by Year 5.</div>
+</div>
+
+<!-- ══ S5 ══ -->
+<div class="panel" id="p4">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 5 · Cost Escalation to $47.9M</h2>
+      <div class="scenario-desc">The city's own §9212 Impact Report includes a "New Site" scenario at $47.9M. This figure appears in the city's own published documents. A 29% increase from $37.2M is historically normal for delayed California public construction.</div>
+    </div>
+    <div class="result-badge badge-fail">✗ Initial Shortfall: −$815,964/yr</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Year 1: Money In vs. Money Out</h3><canvas id="c4a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Revenue</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Debt Service</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Operations</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#555"></div>Total Cost</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Operating Cost Growth (3%/yr)</h3><canvas id="c4b" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#c07000"></div>Annual Operating Cost</div></div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c4c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Initial Tax Revenue</div><div class="kn-value kn-blue">$2,900,000</div><div class="kn-note">Mid-range estimate</div></div>
+    <div class="key-num"><div class="kn-label">Annual Debt Service</div><div class="kn-value kn-red">$3,115,964</div><div class="kn-note">$47.9M @ 5% / 30 yrs</div></div>
+    <div class="key-num"><div class="kn-label">Initial Shortfall</div><div class="kn-value kn-red">−$815,964</div><div class="kn-note">Debt service alone exceeds revenue</div></div>
+    <div class="key-num"><div class="kn-label">30-Year Cumulative Gap</div><div class="kn-value kn-red">~$30M+</div><div class="kn-note">Growing with ops escalation</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Construction Cost</div><div class="av">$47,900,000</div><div class="an">City §9212 Impact Report Scenario 4</div></div>
+      <div class="ai"><div class="al">Bond Rate / Term</div><div class="av">5.0% / 30 yrs</div><div class="an">City Impact Report assumption</div></div>
+      <div class="ai"><div class="al">Annual Debt Service</div><div class="av">$3,115,964</div><div class="an">PMT function; fixed payment</div></div>
+      <div class="ai"><div class="al">Initial Tax Revenue</div><div class="av">$2,900,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$700,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Operating Cost Growth</div><div class="av">3%/yr</div><div class="an">Applied to all scenarios</div></div>
+    </div>
+  </div>
+  <div class="tax-esc-box">
+    <h3>What a 2,000 sq ft Homeowner Pays — If Tax Rate Grows 5%/Year</h3>
+    <div class="tax-esc-grid">
+      <div class="te-cell"><div class="tel">Year 1</div><div class="tev">$340</div><div class="ter">17.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 5</div><div class="tev">$413</div><div class="ter">20.7¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 10</div><div class="tev">$527</div><div class="ter">26.4¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 20</div><div class="tev">$859</div><div class="ter">43.0¢/sf</div></div>
+      <div class="te-cell"><div class="tel">Year 30</div><div class="tev">$1,399</div><div class="ter">70.0¢/sf</div></div>
+    </div>
+    <div class="tax-esc-note">Maximum rate grows annually at the greater of Bay Area CPI or California per capita income growth. 5%/yr assumed. No voter approval required.</div>
+  </div>
+  <div class="credit-box">
+    <h3>Bond Credit Rating at $47.9M</h3>
+    <div class="credit-grid">
+      <div class="credit-item">
+        <div class="ci-label">DSCR at Mid-Range Revenue</div>
+        <p>$2,900,000 ÷ $3,115,964 = <strong>0.93×</strong>. Revenue does not cover debt service before paying a dollar of operating costs. Investment-grade bonds are impossible without massive GF support.</p><br>
+        <div class="ci-label">Additional GF needed just for debt service</div>
+        <div class="ci-val kn-red">$215,964/yr minimum</div>
+      </div>
+      <div class="credit-item">
+        <div class="ci-label">Why This Is Not a Hypothetical</div>
+        <p>The $47.9M figure is published in the city's own §9212 Impact Report as Scenario 4. The project already rose 77% from $21M to $37.2M before construction began.</p><br>
+        <div class="ci-label">Realistic credit rating at $47.9M</div>
+        <div class="ci-val kn-red">Junk / Likely Unfinanceable</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact: Three Phases</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction (Starts ASAP)</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">Tax collected starting December 2026. Even assuming fastest possible timeline, cost escalation risk is real given California public project history.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">$816K+ gap, growing</div>
+        <div class="gf-phase-text">Revenue does not cover debt service alone at mid-range. Even maximum 17¢ rate ($3.16M) leaves a $656K shortfall after operating costs.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$700K → $940K/yr and rising</div>
+        <div class="gf-phase-text">Full operating costs hit GF permanently while bond payments continue. City already faces road maintenance backlog, pension liabilities, and minimal reserves.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Important:</strong> The $47.9M is not invented — it is Scenario 4 in the city's own §9212 Impact Report (Feb. 19, 2026). Cost escalation of this magnitude is historically normal for California public construction.</div>
+</div>
+
+<!-- ══ S6 ══ -->
+<div class="panel" id="p5">
+  <div class="scenario-strip">
+    <div>
+      <h2>Scenario 6 · What Can This Tax Actually Afford to Build?</h2>
+      <div class="scenario-desc">A reverse calculation. Given mid-range revenue and operating assumptions with the required 15% reserve, how large a library can be built? If a 20,000 sq ft library costs $37.2M, what size fits within the actual financial capacity of this tax?</div>
+    </div>
+    <div class="result-badge badge-warn">→ Affordable: ~14,370 sq ft (proposed: 20,000 sq ft)</div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><h3>Proposed vs. Affordable: Construction Cost</h3><canvas id="c5a" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Proposed ($37.2M)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Affordable ($26.7M)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#999"></div>Gap ($10.5M)</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Proposed vs. Affordable: Library Size (sq ft)</h3><canvas id="c5b" height="180"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#b91c1c"></div>Proposed (20,000)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#2563a8"></div>Affordable (14,370)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#999"></div>Gap (5,630)</div>
+      </div>
+    </div>
+    <div class="chart-box"><h3>Your Tax Bill: 2,000 sq ft Home (5%/yr rate growth)</h3><canvas id="c5c" height="180"></canvas>
+      <div class="chart-legend"><div class="legend-item"><div class="legend-swatch" style="background:#1a4480"></div>Annual Tax ($)</div></div>
+    </div>
+  </div>
+  <div class="key-number-row">
+    <div class="key-num"><div class="kn-label">Available for Debt + Reserve</div><div class="kn-value kn-blue">$2,000,000</div><div class="kn-note">$2,700,000 revenue − $700,000 ops</div></div>
+    <div class="key-num"><div class="kn-label">Max Supportable Loan (w/ 15% reserve)</div><div class="kn-value kn-amber">~$26,730,000</div><div class="kn-note">Reverse-solved at 5% / 30 yrs</div></div>
+    <div class="key-num"><div class="kn-label">Proposed Construction Cost</div><div class="kn-value kn-red">$37,200,000</div><div class="kn-note">Exceeds capacity by ~$10.5M</div></div>
+    <div class="key-num"><div class="kn-label">Affordable Library Size</div><div class="kn-value kn-amber">~14,370 sq ft</div><div class="kn-note">vs. 20,000 sq ft proposed (−28%)</div></div>
+  </div>
+  <div class="assumptions-box">
+    <h3>Assumptions — stated explicitly</h3>
+    <div class="assumptions-grid">
+      <div class="ai"><div class="al">Initial Revenue (mid)</div><div class="av">$2,700,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Initial Operating Cost</div><div class="av">$700,000</div><div class="an">Mid-range estimate</div></div>
+      <div class="ai"><div class="al">Available for Debt + Reserve</div><div class="av">$2,000,000</div><div class="an">Revenue minus operating costs</div></div>
+      <div class="ai"><div class="al">Reserve Requirement</div><div class="av">15% of debt service</div><div class="an">Initiative maximum; inv. grade minimum</div></div>
+      <div class="ai"><div class="al">Cost per sq ft (proposed)</div><div class="av">$1,860/sq ft</div><div class="an">$37.2M ÷ 20,000 sq ft</div></div>
+      <div class="ai"><div class="al">Method</div><div class="av">Proportional ratio</div><div class="an">Affordable cost ÷ total cost × 20,000 sf</div></div>
+    </div>
+  </div>
+  <div class="math-box">
+    <strong style="font-size:15px;">The Arithmetic</strong><br><br>
+    Revenue available for debt + reserve = $2,700,000 − $700,000 = <strong>$2,000,000</strong><br>
+    With 15% reserve, net available for debt service = $2,000,000 ÷ 1.15 = <strong>$1,739,130</strong><br>
+    Maximum loan at 5%/30yr: $1,739,130 ÷ 0.06505 ≈ <strong>$26,730,000</strong><br><br>
+    Affordable sq ft = ($26,730,000 ÷ $37,200,000) × 20,000 = <strong>~14,370 sq ft</strong><br><br>
+    The proposed library is <strong>~5,630 sq ft too large</strong> for what this tax can support — roughly 28% oversized.
+  </div>
+  <div class="risk-box">
+    <h3>Risks That Could Make the Affordable Size Even Smaller</h3>
+    <div class="risk-grid">
+      <div class="risk-item">
+        <div class="ri-title">Interest Rate Risk</div>
+        <div class="ri-impact">+1% rate → −1,150 sq ft</div>
+        <div class="ri-text">If bond rate is 6% instead of 5%, annual debt service rises and the maximum affordable loan drops to ~$23.4M, reducing affordable size to ~12,600 sq ft.</div>
+      </div>
+      <div class="risk-item">
+        <div class="ri-title">Revenue Risk</div>
+        <div class="ri-impact">−10% revenue → −1,400 sq ft</div>
+        <div class="ri-text">If revenue comes in 10% below mid-range ($2,430,000), only $1,730,000 remains after operations — reducing the affordable library to ~12,970 sq ft.</div>
+      </div>
+      <div class="risk-item">
+        <div class="ri-title">Operating Cost Risk</div>
+        <div class="ri-impact">3%/yr growth narrows capacity every year</div>
+        <div class="ri-text">By year 5, operating costs grow from $700K to $811K — reducing the amount available for debt service. The affordable size shown here is Year 1 only; financial capacity shrinks every year.</div>
+      </div>
+    </div>
+  </div>
+  <div class="gf-section">
+    <h3>General Fund Impact — Even for an Affordable Library</h3>
+    <div class="gf-phases">
+      <div class="gf-phase phase-a">
+        <div class="gf-phase-label">Phase 1 · Pre-Construction</div>
+        <div class="gf-phase-amount">$157,615/yr (current)</div>
+        <div class="gf-phase-text">A smaller library still requires the same planning, permitting, and construction timeline with all the same risks.</div>
+      </div>
+      <div class="gf-phase phase-b">
+        <div class="gf-phase-label">Phase 2 · Years 1–10 After Opening</div>
+        <div class="gf-phase-amount">Near break-even at start</div>
+        <div class="gf-phase-text">A ~14,370 sq ft library breaks even in year 1 under mid-range assumptions. But 3%/yr operating escalation erodes the margin — GF support needed by year 5 or 6.</div>
+      </div>
+      <div class="gf-phase phase-c">
+        <div class="gf-phase-label">Phase 3 · After Year 10 — Permanent</div>
+        <div class="gf-phase-amount">$700K → $940K/yr and rising</div>
+        <div class="gf-phase-text">Even a smaller library imposes the same Phase 3 burden. Operating costs hit the GF permanently regardless of library size. This obligation does not go away.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote"><strong>Bottom line:</strong> The tax cannot finance the proposed 20,000 sq ft library at mid-range assumptions. To build what is proposed, the city must either scale back to ~14,370 sq ft, find $10.5M in outside funding not yet identified, or ask voters to approve a higher rate than 17¢. None of these has been presented to voters.</div>
+</div>
+
+<!-- SUMMARY TABLE -->
+<div class="summary-wrap">
+  <h2>All Scenarios at a Glance</h2>
+  <table class="summary">
+    <thead>
+      <tr>
+        <th>Scenario</th><th>Initial Revenue</th><th>Debt Service</th><th>Initial Ops</th><th>Year-1 Result</th><th>GF After Year 10</th><th>Bond Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="td-name">S1 · 2023 Baseline</td><td>$2,500,000</td><td>$2,421,475</td><td>$900,000</td><td class="td-red">−$821,475</td><td class="td-red">$900K→$1.21M/yr</td><td class="td-amber">Below Inv. Grade</td></tr>
+      <tr><td class="td-name">S2 · Worst Case</td><td>$2,700,000</td><td>$2,421,475</td><td>$900,000</td><td class="td-red">−$621,475</td><td class="td-red">$900K→$1.21M/yr</td><td class="td-amber">Below Inv. Grade</td></tr>
+      <tr><td class="td-name">S3 · Mid-Range</td><td>$2,900,000</td><td>$2,421,475</td><td>$700,000</td><td class="td-red">−$221,475</td><td class="td-red">$700K→$940K/yr</td><td class="td-amber">Below Inv. Grade</td></tr>
+      <tr><td class="td-name">S4 · Optimistic</td><td>$3,156,019</td><td>$2,421,475</td><td>$500,000</td><td class="td-amber">+$234,544 → deficit ~Yr 5</td><td class="td-amber">$500K→$672K/yr</td><td class="td-amber">A (Yr 1 only)</td></tr>
+      <tr><td class="td-name">S5 · Cost Escalation ($47.9M)</td><td>$2,900,000</td><td>$3,115,964</td><td>$700,000</td><td class="td-red">−$815,964</td><td class="td-red">$700K→$940K/yr</td><td class="td-red">Junk</td></tr>
+      <tr><td class="td-name">S6 · Affordable Size</td><td>$2,700,000</td><td>—</td><td>$700,000</td><td class="td-amber">Max build: ~$26.7M</td><td class="td-amber">$700K→$940K/yr</td><td>~14,370 sq ft</td></tr>
+    </tbody>
+  </table>
+  <p class="summary-note">Debt service: PMT at 5.00%, 30-year term, level payments. Operating costs grow 3%/yr in all scenarios; "initial" values shown. GF burden after year 10 = permanent annual obligation when 10-year operating cost authorization expires. Current GF library expenditure: $157,615/yr. Bond ratings: AA ≥ 1.50× DSCR, A ≥ 1.25×, BBB ≥ 1.15×. Initiative caps tax at 115% of costs, limiting DSCR to 1.15× from tax revenue alone. Tax rate growth: 5%/yr assumed. All homeowner estimates use 2,000 sq ft home.</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ── TAB SWITCHING ──
+const drawn = [false,false,false,false,false,false];
+function show(n) {
+  document.querySelectorAll('.panel').forEach((p,i) => p.classList.toggle('active', i===n));
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===n));
+  if (!drawn[n]) { buildAll(n); drawn[n]=true; }
+}
+
+// ── COLORS ──
+const BLUE='#2563a8', RED='#b91c1c', ORANGE='#c07000', DARK='#444444', GREEN='#166534', GRAY='#999999';
+
+// ── CANVAS HELPERS ──
+function getCtx(id) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  el.width = el.parentElement.clientWidth - 24;
+  el.height = 180;
+  return el.getContext('2d');
+}
+
+function fmt$(v) {
+  if (v >= 1e6) return '$'+(v/1e6).toFixed(1)+'M';
+  if (v >= 1e3) return '$'+(v/1e3).toFixed(0)+'K';
+  return '$'+Math.round(v).toLocaleString();
+}
+
+// ── BAR CHART ──
+function barChart(id, labels, values, colors) {
+  const ctx = getCtx(id); if (!ctx) return;
+  const W = ctx.canvas.width, H = ctx.canvas.height;
+  const padL=46, padR=8, padT=14, padB=28;
+  const chartW = W-padL-padR, chartH = H-padT-padB;
+  ctx.clearRect(0,0,W,H);
+
+  const max = Math.max(...values) * 1.12;
+  const n = values.length;
+  const barW = Math.floor(chartW/n * 0.6);
+  const gap  = Math.floor(chartW/n);
+
+  // y gridlines + labels
+  ctx.strokeStyle='#e8e8e8'; ctx.lineWidth=1;
+  ctx.fillStyle='#666'; ctx.font='10px Arial'; ctx.textAlign='right';
+  for (let i=0;i<=4;i++) {
+    const v = max*i/4;
+    const y = padT + chartH - (v/max)*chartH;
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+chartW,y); ctx.stroke();
+    ctx.fillText(fmt$(v), padL-3, y+4);
+  }
+
+  // bars
+  values.forEach((v,i) => {
+    const x = padL + i*gap + (gap-barW)/2;
+    const barH = (v/max)*chartH;
+    const y = padT + chartH - barH;
+    ctx.fillStyle = colors[i];
+    ctx.fillRect(x, y, barW, barH);
+    // value label on top
+    ctx.fillStyle='#222'; ctx.font='10px Arial'; ctx.textAlign='center';
+    ctx.fillText(fmt$(v), x+barW/2, y-3);
+    // x label
+    ctx.fillStyle='#555'; ctx.font='10px Arial';
+    ctx.fillText(labels[i], x+barW/2, H-6);
+  });
+}
+
+// ── LINE CHART ──
+function lineChart(id, datasets, yFmt) {
+  const ctx = getCtx(id); if (!ctx) return;
+  const W = ctx.canvas.width, H = ctx.canvas.height;
+  const padL=46, padR=8, padT=14, padB=28;
+  const chartW = W-padL-padR, chartH = H-padT-padB;
+  ctx.clearRect(0,0,W,H);
+
+  // find range across all datasets
+  const allVals = datasets.flatMap(d=>d.data);
+  const minV = Math.min(...allVals);
+  const maxV = Math.max(...allVals);
+  const range = maxV - minV || 1;
+  const lo = minV - range*0.1;
+  const hi = maxV + range*0.1;
+  const span = hi-lo;
+
+  const n = datasets[0].data.length;
+
+  // gridlines
+  ctx.strokeStyle='#e8e8e8'; ctx.lineWidth=1;
+  ctx.fillStyle='#666'; ctx.font='10px Arial'; ctx.textAlign='right';
+  for (let i=0;i<=4;i++) {
+    const v = lo + span*i/4;
+    const y = padT + chartH - ((v-lo)/span)*chartH;
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+chartW,y); ctx.stroke();
+    ctx.fillText(yFmt ? yFmt(v) : fmt$(v), padL-3, y+4);
+  }
+
+  // zero line if needed
+  if (lo < 0 && hi > 0) {
+    const y0 = padT + chartH - ((0-lo)/span)*chartH;
+    ctx.strokeStyle='#aaa'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(padL,y0); ctx.lineTo(padL+chartW,y0); ctx.stroke();
+  }
+
+  // lines
+  datasets.forEach(ds => {
+    ctx.lineWidth=2.5; ctx.lineJoin='round';
+    ds.data.forEach((v,i) => {
+      const x = padL + i*(chartW/(n-1));
+      const y = padT + chartH - ((v-lo)/span)*chartH;
+      if (i===0) { ctx.beginPath(); ctx.moveTo(x,y); }
+      else {
+        // color by sign for surplus/deficit charts
+        if (ds.colorBySign) {
+          ctx.strokeStyle = (ds.data[i-1]>=0 && v>=0) ? GREEN : RED;
+        } else {
+          ctx.strokeStyle = ds.color;
+        }
+        ctx.lineTo(x,y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x,y);
+      }
+      // dot
+      ctx.fillStyle = ds.colorBySign ? (v>=0?GREEN:RED) : ds.color;
+      ctx.beginPath(); ctx.arc(x,y,3,0,Math.PI*2); ctx.fill();
+    });
+    // x labels
+    ctx.fillStyle='#555'; ctx.font='10px Arial'; ctx.textAlign='center';
+    ds.data.forEach((_,i) => {
+      const x = padL + i*(chartW/(n-1));
+      if (i===0 || i===n-1 || i%2===0)
+        ctx.fillText('Yr '+(i+1), x, H-6);
+    });
+  });
+}
+
+// ── TAX LINE ──
+function taxLineChart(id) {
+  const yrs = [1,5,10,15,20,25,30];
+  const data = yrs.map(y => Math.round(340 * Math.pow(1.05, y-1)));
+  const ctx = getCtx(id); if (!ctx) return;
+  const W = ctx.canvas.width, H = ctx.canvas.height;
+  const padL=52, padR=8, padT=14, padB=28;
+  const chartW = W-padL-padR, chartH = H-padT-padB;
+  ctx.clearRect(0,0,W,H);
+
+  const maxV = data[data.length-1]*1.1;
+  const n = data.length;
+
+  ctx.strokeStyle='#e8e8e8'; ctx.lineWidth=1;
+  ctx.fillStyle='#666'; ctx.font='10px Arial'; ctx.textAlign='right';
+  for (let i=0;i<=4;i++) {
+    const v = maxV*i/4;
+    const y = padT + chartH - (v/maxV)*chartH;
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+chartW,y); ctx.stroke();
+    ctx.fillText('$'+Math.round(v).toLocaleString(), padL-3, y+4);
+  }
+
+  ctx.strokeStyle=BLUE; ctx.lineWidth=2.5; ctx.lineJoin='round';
+  ctx.fillStyle='rgba(37,99,168,0.08)';
+  ctx.beginPath();
+  data.forEach((v,i) => {
+    const x = padL + i*(chartW/(n-1));
+    const y = padT + chartH - (v/maxV)*chartH;
+    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+
+  // fill under
+  ctx.beginPath();
+  data.forEach((v,i) => {
+    const x = padL + i*(chartW/(n-1));
+    const y = padT + chartH - (v/maxV)*chartH;
+    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  });
+  ctx.lineTo(padL+chartW, padT+chartH); ctx.lineTo(padL, padT+chartH); ctx.closePath();
+  ctx.fill();
+
+  // dots + labels
+  data.forEach((v,i) => {
+    const x = padL + i*(chartW/(n-1));
+    const y = padT + chartH - (v/maxV)*chartH;
+    ctx.fillStyle=BLUE; ctx.beginPath(); ctx.arc(x,y,3.5,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#333'; ctx.font='bold 10px Arial'; ctx.textAlign='center';
+    ctx.fillText('$'+v.toLocaleString(), x, y-6);
+    ctx.fillStyle='#777'; ctx.font='10px Arial';
+    ctx.fillText('Yr '+yrs[i], x, H-6);
+  });
+}
+
+// ── GROUPED BAR (S6) ──
+function groupedBar(id, groups, series) {
+  const ctx = getCtx(id); if (!ctx) return;
+  const W = ctx.canvas.width, H = ctx.canvas.height;
+  const padL=52, padR=8, padT=14, padB=28;
+  const chartW = W-padL-padR, chartH = H-padT-padB;
+  ctx.clearRect(0,0,W,H);
+
+  const allVals = series.flatMap(s=>s.data);
+  const maxV = Math.max(...allVals)*1.12;
+
+  ctx.strokeStyle='#e8e8e8'; ctx.lineWidth=1;
+  ctx.fillStyle='#666'; ctx.font='10px Arial'; ctx.textAlign='right';
+  for (let i=0;i<=4;i++) {
+    const v = maxV*i/4;
+    const y = padT + chartH - (v/maxV)*chartH;
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+chartW,y); ctx.stroke();
+    ctx.fillText(fmt$(v), padL-3, y+4);
+  }
+
+  const groupW = chartW / groups.length;
+  const barW = Math.floor(groupW / (series.length+1));
+
+  groups.forEach((g,gi) => {
+    series.forEach((s,si) => {
+      const v = s.data[gi];
+      const x = padL + gi*groupW + (si+0.5)*barW;
+      const bH = (v/maxV)*chartH;
+      const y = padT + chartH - bH;
+      ctx.fillStyle = s.color;
+      ctx.fillRect(x, y, barW-2, bH);
+      ctx.fillStyle='#222'; ctx.font='9px Arial'; ctx.textAlign='center';
+      ctx.fillText(fmt$(v), x+barW/2-1, y-3);
+    });
+    ctx.fillStyle='#555'; ctx.font='10px Arial'; ctx.textAlign='center';
+    ctx.fillText(g, padL + gi*groupW + groupW/2, H-6);
+  });
+}
+
+// ── BUILD CHARTS FOR EACH SCENARIO ──
+function opsCurve(initOps) {
+  return Array.from({length:10}, (_,i) => Math.round(initOps * Math.pow(1.03,i)));
+}
+
+function buildAll(n) {
+  if (n===0) {
+    barChart('c0a',['Revenue','Debt Svc','Ops','Total'],[2500000,2421475,900000,3321475],[BLUE,RED,ORANGE,DARK]);
+    lineChart('c0b',[{data:opsCurve(900000),color:ORANGE}]);
+    taxLineChart('c0c');
+  } else if (n===1) {
+    barChart('c1a',['Revenue','Debt Svc','Ops','Total'],[2700000,2421475,900000,3321475],[BLUE,RED,ORANGE,DARK]);
+    lineChart('c1b',[{data:opsCurve(900000),color:ORANGE}]);
+    taxLineChart('c1c');
+  } else if (n===2) {
+    barChart('c2a',['Revenue','Debt Svc','Ops','Total'],[2900000,2421475,700000,3121475],[BLUE,RED,ORANGE,DARK]);
+    lineChart('c2b',[{data:opsCurve(700000),color:ORANGE}]);
+    taxLineChart('c2c');
+  } else if (n===3) {
+    barChart('c3a',['Revenue','Debt Svc','Ops','Total'],[3156019,2421475,500000,2921475],[BLUE,RED,ORANGE,DARK]);
+    const debt=2421475, rev=3156019;
+    const surplus = opsCurve(500000).map(o => rev-debt-o);
+    lineChart('c3b',[{data:surplus,color:GREEN,colorBySign:true}],
+      v => (v>=0?'+':'')+fmt$(Math.abs(v)));
+    taxLineChart('c3c');
+  } else if (n===4) {
+    barChart('c4a',['Revenue','Debt Svc','Ops','Total'],[2900000,3115964,700000,3815964],[BLUE,RED,ORANGE,DARK]);
+    lineChart('c4b',[{data:opsCurve(700000),color:ORANGE}]);
+    taxLineChart('c4c');
+  } else if (n===5) {
+    groupedBar('c5a',['Cost ($)'],
+      [{data:[37200000],color:RED},{data:[26730000],color:BLUE},{data:[10470000],color:GRAY}]);
+    groupedBar('c5b',['Size (sq ft)'],
+      [{data:[20000],color:RED},{data:[14370],color:BLUE},{data:[5630],color:GRAY}]);
+    taxLineChart('c5c');
+  }
+}
+
+window.addEventListener('load', () => { buildAll(0); drawn[0]=true; });
+window.addEventListener('resize', () => {
+  drawn.forEach((_,i) => { if (drawn[i]) { buildAll(i); } });
+});
+</script>
+</body>
+</html>
