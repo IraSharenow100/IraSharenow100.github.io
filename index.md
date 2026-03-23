@@ -28,6 +28,10 @@ Suburban price premiums, size differences, and long-term appreciation compared t
 
 Data-driven analysis of El Cerrito, California — city finances, pension obligations, and public safety performance.
 
+**Interactive Tableau Dashboards:**
+- [Parcel Tax Analysis Made Simple](https://public.tableau.com/app/profile/ira.sharenow1281/viz/ElCerritoParcelTaxAnalysisMadeSimple/2026ParcelTax)
+- [Detailed Parcel Tax Analysis](https://public.tableau.com/app/profile/ira.sharenow1281/viz/DetailedElCerritoParcelTaxAnalysis/2026ParcelTax)
+
 **[CalPERS Pension Liability Analysis](/calpers-ual-analysis/)**
 El Cerrito's unfunded pension liability has reached crisis levels, crowding out basic city services.
 
