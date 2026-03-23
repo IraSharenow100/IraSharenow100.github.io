@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Renters Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 44px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* myth vs fact */
+  .myth-fact {
+    margin: 4px 0 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .myth-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .myth-head {
+    padding: 8px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .myth-head.claim {
+    background: #e8e2d6;
+    color: #555;
+    border-right: 1px solid #ddd;
+  }
+
+  .myth-head.reality {
+    background: #1b2a4a;
+    color: #b0c4de;
+  }
+
+  .myth-body {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .myth-body.claim {
+    background: #fafaf8;
+    border-right: 1px solid #ddd;
+    color: #555;
+    font-style: italic;
+  }
+
+  .myth-body.reality {
+    background: #fff;
+    color: #1a1a1a;
+  }
+
+  .myth-body.reality strong { color: #c8202a; }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why renters are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">"Renters don't pay this tax" — that's what they want you to think.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">30+ years</div>
+    <div class="lead-stat-label">
+      <strong>How long this tax runs — escalating every single year.</strong><br>
+      When landlord costs rise, rents follow. Renters feel this tax
+      even if their name isn't on the bill.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Myth vs fact -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">The Yes campaign says renters don't pay. <em>Here's the full story.</em></div>
+        <div class="reason-text">
+          It's true that the parcel tax is billed to property owners, not tenants.
+          But landlords operate businesses. <strong>When their costs rise,
+          they look to recover those costs — through rent increases,
+          reduced maintenance, or both.</strong> A tax that escalates
+          every year for 30+ years is a permanent upward pressure
+          on every rental unit in El Cerrito.
+        </div>
+      </div>
+    </div>
+
+    <div class="myth-fact">
+      <div class="myth-row">
+        <div class="myth-head claim">What the Yes campaign says</div>
+        <div class="myth-head reality">What it means for renters</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth-body claim">"A special parcel tax is imposed on the property owner. Renters are not charged."</div>
+        <div class="myth-body reality">The tax bill goes to your landlord. <strong>Landlords pass rising costs to tenants.</strong> A tax that grows every year for 30+ years is a permanent cost increase on every rental property in El Cerrito.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 2: you won't be here -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">The library opens in 2032 — <em>if it opens at all.</em></div>
+        <div class="reason-text">
+          Tax collection starts December 2026. The library cannot open
+          until a competitive state housing grant is awarded to a developer
+          who has <strong>never applied for that grant on this site.</strong>
+          The same developer applied for a nearby parcel and was rejected
+          in the most recent round. The most optimistic opening date is 2032 —
+          six years from now. Many of today's El Cerrito renters will have
+          moved before the library ever opens.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">Renters absorb the cost — without the ownership benefit</div>
+      <div class="callout-text">
+        Homeowners who pay this tax own an asset that may appreciate over time.
+        Renters get no such benefit. <strong>If your landlord raises your rent
+        to offset the tax, you pay — with nothing to show for it
+        if the library is never built.</strong>
+        There is no refund mechanism if the project fails.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: affordable housing stalled -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">The library blocks the affordable housing <em>El Cerrito actually needs.</em></div>
+        <div class="reason-text">
+          The library is planned for the ground floor of a housing building
+          at the El Cerrito Plaza BART station. That housing project
+          depends on the same state grant the library does —
+          one the developer has never applied for here.
+          <strong>As long as the library plan is tied to this uncertain grant,
+          the affordable housing units planned for that site are also at risk.</strong>
+          El Cerrito has permitted only about 7% of its state-mandated
+          housing obligation. Renters need more housing — not another reason
+          to delay it.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        The TOD project at El Cerrito Plaza includes <strong>affordable rental units</strong>
+        for low-income families. Those units depend on the same AHSC state grant
+        the library depends on. The developer's most recent application —
+        for a nearby parcel — was <strong>rejected in Round 9 (2024).</strong>
+        Parcel C West, the library site, has never even applied.
+        Fewer affordable units means a tighter rental market for everyone.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 4: escalating tax = escalating pressure -->
+    <div class="reason">
+      <div class="reason-num">4</div>
+      <div class="reason-body">
+        <div class="reason-title">The tax rises every year — <em>so does the pressure on your rent.</em></div>
+        <div class="reason-text">
+          Measure C escalates annually by whichever is greater:
+          Bay Area CPI or California per-capita income growth.
+          A tax that starts at $289/year on a typical home grows to
+          over $411 by Year 10 and over $900 by Year 30.
+          <strong>That is three decades of rising landlord costs
+          in a city where rents are already high.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "They told me this tax doesn't apply to renters. But my landlord's
+        costs go up — and so does my rent.
+        <strong>I'm paying for a library I may never see,
+        in a city I may not be living in by 2032.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      Renters deserve <em>honest answers</em> — not half the story.<br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Paid for by No on Measure C. Sources: C4PSL FAQ, Griffin Structures ROM Report (Jan. 2026), City of El Cerrito §9212 Impact Report (Feb. 2026), California HCD APR data, SGC AHSC award records.
+  </div>
+
+</div>
+</body>
+</html>

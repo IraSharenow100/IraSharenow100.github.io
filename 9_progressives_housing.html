@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Housing Advocates Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* RHNA progress bar */
+  .rhna-box {
+    background: #f9f6f0;
+    border: 1px solid #e0d8cc;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin: 4px 0 28px;
+  }
+
+  .rhna-title {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #1b2a4a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .rhna-bar-wrap {
+    background: #e8e2d6;
+    border-radius: 3px;
+    height: 28px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .rhna-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: #c8202a;
+    width: 7%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+
+  .rhna-bar-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .rhna-stats {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .rhna-stats strong { color: #1a1a1a; }
+  .rhna-note { font-size: 11px; color: #888; margin-top: 10px; font-style: italic; }
+
+  /* linked fate diagram */
+  .linked-fate {
+    margin: 4px 0 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .lf-head {
+    background: #1b2a4a;
+    padding: 9px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #b0c4de;
+  }
+
+  .lf-body {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .lf-card {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-radius: 4px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .lf-card-title {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1b2a4a;
+    margin-bottom: 4px;
+  }
+
+  .lf-card-units {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1b2a4a;
+    font-family: Georgia, serif;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .lf-card-sub {
+    font-size: 11.5px;
+    color: #666;
+    line-height: 1.3;
+  }
+
+  .lf-arrow {
+    font-size: 28px;
+    color: #c8202a;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .lf-arrow-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #c8202a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .lf-footer {
+    background: #fff0f0;
+    border-top: 1px solid #f5c0c0;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: #c8202a;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why housing advocates are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">The library plan and the affordable housing plan share the same fatal flaw.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">7%</div>
+    <div class="lead-stat-label">
+      <strong>Of its state-mandated housing obligation El Cerrito has met through 2024.</strong><br>
+      The city needs 1,391 new units by 2031. It has permitted roughly 98.
+      The TOD project that the library depends on is the city's primary path
+      to meeting that obligation — and it is stalled.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Reason 1: RHNA failure -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">El Cerrito's housing pipeline <em>has nearly stalled.</em></div>
+        <div class="reason-text">
+          The state requires El Cerrito to permit 1,391 housing units — including
+          588 very-low-income and 339 low-income units — between 2023 and 2031.
+          Through 2024, roughly 98 units have been permitted.
+          <strong>The El Cerrito Plaza TOD is the city's only realistic path
+          to meeting that obligation.</strong> It includes 743 units,
+          with 351 below-market-rate. Any further delay to the TOD
+          threatens the entire pipeline.
+        </div>
+      </div>
+    </div>
+
+    <div class="rhna-box">
+      <div class="rhna-title">El Cerrito 6th cycle RHNA progress — units permitted through 2024</div>
+      <div class="rhna-bar-wrap">
+        <div class="rhna-bar">
+          <div class="rhna-bar-label">7%</div>
+        </div>
+      </div>
+      <div class="rhna-stats">
+        <span><strong>98</strong> units permitted</span>
+        <span><strong>1,391</strong> units required by 2031</span>
+      </div>
+      <div class="rhna-note">El Cerrito Plaza TOD (743 units, 351 below-market-rate) is the primary path to meeting this obligation.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 2: shared fate of library and housing -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">The library and 79 affordable units <em>share the same uncertain grant.</em></div>
+        <div class="reason-text">
+          The library is planned for the ground floor of Parcel C West —
+          the same building that would house 79 affordable rental units.
+          Both the library and those housing units depend on the developer
+          winning an AHSC state grant. <strong>The developer has never applied
+          for this grant on Parcel C West.</strong> On the adjacent Parcel C East —
+          84 affordable units, same developer — the application was
+          rejected in Round 9 (2024). If the grant fails again,
+          both the library and those 79 homes don't get built.
+        </div>
+      </div>
+    </div>
+
+    <div class="linked-fate">
+      <div class="lf-head">Parcel C West — library and affordable housing share one grant</div>
+      <div class="lf-body">
+        <div class="lf-card">
+          <div class="lf-card-title">Library</div>
+          <div class="lf-card-units">20,000</div>
+          <div class="lf-card-sub">sq ft, ground floor<br>Parcel C West</div>
+        </div>
+        <div>
+          <div class="lf-arrow">+</div>
+          <div class="lf-arrow-label">same building<br>same grant</div>
+        </div>
+        <div class="lf-card">
+          <div class="lf-card-title">Affordable housing</div>
+          <div class="lf-card-units">79</div>
+          <div class="lf-card-sub">affordable units<br>Parcel C West</div>
+        </div>
+      </div>
+      <div class="lf-footer">If the AHSC grant fails — neither gets built.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: grant track record -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">The grant track record at this site <em>should alarm housing advocates.</em></div>
+        <div class="reason-text">
+          Parcel A South — the first affordable housing phase at El Cerrito Plaza —
+          applied for AHSC twice before winning in Round 8.
+          Parcel C East applied in Round 9 and was rejected.
+          <strong>Parcel C West, the library site, has never applied.</strong>
+          A first-time application for a complex TOD project
+          at a site with no prior approval history is a high-risk bet —
+          especially as Cap-and-Invest auction revenues, which fund AHSC,
+          fell sharply in 2025 — some quarterly auctions down more than 35%
+          from the prior year — putting AHSC funding under sustained pressure.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">Passing Measure C does not help the housing get built</div>
+      <div class="callout-text">
+        The parcel tax funds the library's construction and operating costs.
+        It does not contribute to the AHSC application score.
+        It does not fund the affordable housing units.
+        It does not accelerate the grant timeline.
+        <strong>Voting Yes on Measure C commits residents to 30 years of taxes
+        while doing nothing to address the actual barrier — the missing
+        state grant — that is blocking both the library and the housing.</strong>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        Bay Point — same county, same BART TOD model — secured
+        <strong>$9.9M in state grants and $2M in federal grants</strong>
+        for its new library. El Cerrito never applied for those programs.
+        A housing advocate should ask: why is El Cerrito asking residents
+        to fund 100% of library costs when peer cities are securing
+        millions in outside funding?
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "I support affordable housing near transit. That's exactly why
+        I'm voting No. The library plan is tied to the same grant
+        that just got rejected for the adjacent parcel.
+        <strong>Tying 79 affordable homes to an uncertain library plan
+        is bad strategy for housing — not good strategy.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      El Cerrito needs housing. <em>This plan risks both.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Sources: California HCD APR data, ABAG 6th Cycle RHNA allocations, City of El Cerrito §9212 Impact Report (Feb. 2026), SGC AHSC award records (Rounds 8–9), Contra Costa Herald (Oct. 2023).
+  </div>
+
+</div>
+</body>
+</html>

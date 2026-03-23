@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Small Business Owners Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* business cost table */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 28px;
+    font-size: 13.5px;
+  }
+
+  .cost-table th {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 8px 12px;
+    background: #1b2a4a;
+    color: #b0c4de;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cost-table th:not(:first-child) { text-align: right; }
+  .cost-table th:last-child { border-right: none; }
+
+  .cost-table td {
+    padding: 9px 12px;
+    border-bottom: 0.5px solid #e8e2d6;
+    color: #2a2a2a;
+  }
+
+  .cost-table td:not(:first-child) { text-align: right; }
+  .cost-table tr:nth-child(even) td { background: #fafafa; }
+
+  .cost-table .yr10 { color: #c8202a; font-weight: 700; }
+  .cost-table .sub {
+    font-size: 11.5px;
+    color: #888;
+    display: block;
+    margin-top: 1px;
+  }
+
+  .cost-note {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+    padding: 8px 12px;
+    border-top: 0.5px solid #e8e2d6;
+    background: #f9f6f0;
+  }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* no exemption comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 4px 0 28px;
+  }
+
+  .compare-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+
+  .compare-card.bad { border-top: 4px solid #c8202a; background: #fff8f8; }
+  .compare-card.neutral { border-top: 4px solid #888; background: #fafafa; }
+
+  .compare-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .compare-card.bad .compare-label { color: #c8202a; }
+  .compare-card.neutral .compare-label { color: #555; }
+
+  .compare-item {
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 1.5;
+    padding: 3px 0;
+    border-bottom: 0.5px solid #e8e2d6;
+  }
+
+  .compare-item:last-child { border-bottom: none; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why small business owners are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">The same rate as every homeowner — with no exemption, no break, and no benefit for six years.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">$0</div>
+    <div class="lead-stat-label">
+      <strong>The exemptions available to El Cerrito small businesses under Measure C.</strong><br>
+      Seniors have a (largely inaccessible) exemption. Businesses have nothing.
+      The tax hits every commercial square foot at the same rate as every home —
+      and rises every year for 30+ years.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Reason 1: what it actually costs -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">$0.17 per square foot. <em>Every year. Rising.</em></div>
+        <div class="reason-text">
+          The tax rate is identical for commercial and residential properties.
+          There is no small business rate, no hardship exemption,
+          and no cap on how high the rate can go over 30 years.
+          <strong>The City Council raises the rate annually by resolution —
+          no voter approval required.</strong>
+          The table below shows what typical El Cerrito business footprints pay.
+        </div>
+      </div>
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Business size</th>
+          <th>Year 1 tax</th>
+          <th>Year 10 tax</th>
+          <th>30-year total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2,000 sq ft
+            <span class="sub">Small café, salon, boutique</span>
+          </td>
+          <td>$340</td>
+          <td class="yr10">$484</td>
+          <td>$18,800+</td>
+        </tr>
+        <tr>
+          <td>5,000 sq ft
+            <span class="sub">Mid-size restaurant, retailer</span>
+          </td>
+          <td>$850</td>
+          <td class="yr10">$1,210</td>
+          <td>$47,000+</td>
+        </tr>
+        <tr>
+          <td>10,000 sq ft
+            <span class="sub">Larger retailer, office</span>
+          </td>
+          <td>$1,700</td>
+          <td class="yr10">$2,420</td>
+          <td>$94,000+</td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="4" class="cost-note">Year 10 estimated at ~3.5% annual escalation. 30-year totals are approximate minimums — actual rate depends on Bay Area CPI or CA per-capita income growth, whichever is greater.</td>
+      </tr>
+    </table>
+
+    <hr class="divider">
+
+    <!-- Reason 2: triple-net leases -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">If you lease your space, <em>you likely pay this anyway.</em></div>
+        <div class="reason-text">
+          Most El Cerrito commercial leases are triple-net (NNN) —
+          meaning tenants pay property taxes, insurance, and maintenance
+          on top of base rent. <strong>If your landlord's parcel tax bill rises
+          every year for 30 years, that cost flows directly into your
+          occupancy expenses.</strong> Whether you own or lease,
+          Measure C adds to your bottom line — without any exemption,
+          any benefit, or any recourse.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">No exemption for small businesses — not even a token one</div>
+      <div class="callout-text">
+        Measure C includes a senior exemption — inaccessible in practice,
+        but at least it exists on paper.
+        <strong>There is no equivalent provision for small businesses,
+        sole proprietors, or commercial tenants.</strong>
+        El Cerrito has 223 commercial parcels covering nearly
+        two million square feet. Every one of them pays the full rate,
+        with no pathway to relief.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: no benefit for 6+ years -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">You pay starting December 2026. <em>The library opens in 2032 at the earliest.</em></div>
+        <div class="reason-text">
+          Whatever foot traffic or community benefit a new library might
+          generate for local businesses — that is six years away at minimum,
+          and only if a competitive state grant is awarded to a developer
+          who has <strong>never applied for that grant on this site.</strong>
+          The same developer applied for a nearby parcel and was rejected
+          in the most recent round. You pay now. The benefit,
+          if it ever arrives, arrives later.
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-card bad">
+        <div class="compare-label">What businesses pay</div>
+        <div class="compare-item">Full $0.17/sq ft rate from Year 1</div>
+        <div class="compare-item">Escalates annually, no ceiling</div>
+        <div class="compare-item">30+ year obligation</div>
+        <div class="compare-item">No exemption available</div>
+        <div class="compare-item">NNN tenants absorb it too</div>
+      </div>
+      <div class="compare-card neutral">
+        <div class="compare-label">What businesses get</div>
+        <div class="compare-item">No foot traffic until 2032+</div>
+        <div class="compare-item">No exemption or credit</div>
+        <div class="compare-item">No guarantee library is built</div>
+        <div class="compare-item">No refund if grant fails</div>
+        <div class="compare-item">No say in rate increases</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 4: tax pile-on -->
+    <div class="reason">
+      <div class="reason-num">4</div>
+      <div class="reason-body">
+        <div class="reason-title">Measure C is one of several new taxes <em>hitting businesses in 2026.</em></div>
+        <div class="reason-text">
+          El Cerrito businesses already face some of the highest combined
+          sales tax rates in California. Measure C adds an annual parcel tax
+          on top of a proposed Contra Costa County healthcare sales tax
+          increase, a regional transit measure, and a community college bond —
+          <strong>all landing in the same 12-month period.</strong>
+          Each measure looks modest in isolation. The stack does not.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        El Cerrito has <strong>223 commercial parcels</strong> covering
+        <strong>1.93 million square feet</strong> of building area.
+        At the initial maximum rate, commercial properties collectively
+        pay roughly <strong>$328,000 per year</strong> toward this tax —
+        with no exemption, no sunset on rate increases,
+        and no guarantee the library is ever built.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "I run a small restaurant on San Pablo. My margins are tight.
+        This tax hits my space the same as every house in El Cerrito —
+        with no exemption and no break.
+        <strong>I'm being asked to fund a library that won't open
+        for six years, if ever, while I pay every month starting now.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      No exemption. No break. <em>No vote.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Sources: City of El Cerrito §9212 Impact Report (Feb. 2026), C4PSL FAQ, Griffin Structures ROM Report (Jan. 2026), SGC AHSC award records. Tax projections estimated at ~3.5% annual escalation.
+  </div>
+
+</div>
+</body>
+</html>

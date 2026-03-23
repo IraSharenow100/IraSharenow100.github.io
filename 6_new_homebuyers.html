@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why New Homebuyers Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 44px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* two obligations visual */
+  .obligations {
+    margin: 4px 0 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .obligations-head {
+    background: #1b2a4a;
+    padding: 9px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #b0c4de;
+  }
+
+  .obligation-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-top: 0.5px solid #e8e2d6;
+    align-items: center;
+  }
+
+  .obligation-row.header-row {
+    background: #f5f0e8;
+  }
+
+  .obligation-cell {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #2a2a2a;
+    line-height: 1.35;
+  }
+
+  .obligation-cell:not(:first-child) {
+    border-left: 0.5px solid #e8e2d6;
+    text-align: right;
+  }
+
+  .obligation-row.header-row .obligation-cell {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+  }
+
+  .obligation-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .obligation-sub {
+    font-size: 11.5px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  .obligation-cell.bad { color: #c8202a; font-weight: 700; }
+  .obligation-cell.neutral { color: #1b2a4a; font-weight: 700; }
+
+  .obligations-note {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+    padding: 8px 14px;
+    border-top: 0.5px solid #e8e2d6;
+    background: #fafaf8;
+  }
+
+  /* prop 13 callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why new homebuyers are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">You already signed one 30-year obligation. This adds another — with none of the upside.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">Two 30-year bills</div>
+    <div class="lead-stat-label">
+      <strong>Your mortgage and Measure C run the same length — but only one builds equity.</strong><br>
+      The parcel tax starts in December 2026, escalates every year,
+      and delivers nothing if the library is never built.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Reason 1: two 30-year obligations -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">Your mortgage builds equity. <em>This tax builds nothing for you.</em></div>
+        <div class="reason-text">
+          If you bought recently, you're already carrying a large mortgage
+          at elevated interest rates. Measure C adds a second 30-year
+          financial obligation on top of it — one that escalates every year,
+          gives you no ownership stake, and <strong>cannot be recovered
+          if the library is never built.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="obligations">
+      <div class="obligations-head">Two 30-year obligations — typical new El Cerrito buyer</div>
+      <div class="obligation-row header-row">
+        <div class="obligation-cell">Obligation</div>
+        <div class="obligation-cell">Year 1 cost</div>
+        <div class="obligation-cell">Builds equity?</div>
+      </div>
+      <div class="obligation-row">
+        <div class="obligation-cell">
+          <div class="obligation-name">30-year mortgage</div>
+          <div class="obligation-sub">~$1.2M purchase, 7% rate, 20% down</div>
+        </div>
+        <div class="obligation-cell neutral">~$76,600/yr</div>
+        <div class="obligation-cell neutral">Yes</div>
+      </div>
+      <div class="obligation-row">
+        <div class="obligation-cell">
+          <div class="obligation-name">Measure C parcel tax</div>
+          <div class="obligation-sub">1,700 sq ft home · escalates annually</div>
+        </div>
+        <div class="obligation-cell bad">$289+/yr</div>
+        <div class="obligation-cell bad">No</div>
+      </div>
+      <div class="obligations-note">
+        The parcel tax runs 30 years after bonds are first issued — potentially 36+ years from today if construction is delayed.
+        The City Council sets the annual rate by resolution. No further voter approval required.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 2: Prop 13 disadvantage -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">New buyers pay full assessed value. <em>Long-timers pay a fraction.</em></div>
+        <div class="reason-text">
+          Under Prop 13, longtime El Cerrito owners pay property taxes on
+          assessments that may be decades old — far below current market value.
+          You bought at today's prices and pay today's full assessed value.
+          <strong>The parcel tax charges everyone the same rate per square foot,
+          but your overall property tax burden as a new buyer is already
+          far heavier than your neighbors' who bought 20 years ago.</strong>
+          Measure C adds one more layer to that imbalance.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">The Yes campaign says the rate is the same for new and existing buyers</div>
+      <div class="callout-text">
+        That's technically true for the parcel tax rate itself.
+        But it ignores the full picture.
+        <strong>A new buyer paying $14,000+/year in base property taxes
+        on a $1.2M assessed home faces a very different burden
+        than a neighbor assessed at $300,000 from a 1995 purchase.</strong>
+        Same parcel tax rate. Very different total tax load.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: no guarantee, you pay regardless -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">The tax starts December 2026. <em>The library may never be built.</em></div>
+        <div class="reason-text">
+          Construction depends on a competitive state housing grant
+          the developer has <strong>never applied for on this site.</strong>
+          The same developer applied for a nearby parcel and was rejected
+          in the most recent round. If the grant fails,
+          your taxes are collected — and the library is not built.
+          There is no refund. There is no recourse. The tax clock
+          keeps running for 30 years from the date bonds are first issued,
+          whenever that is.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        The 2025 petition cited a $21.2 million construction cost.
+        By January 2026 the city's own consultant put it at <strong>$37.2 million.</strong>
+        Griffin Structures projects costs rising <strong>6% per year</strong>
+        from that baseline. Every year of delay — waiting for a grant
+        that may never come — adds roughly $2 million to the bill
+        your taxes are expected to cover.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 4: no vote on rate increases -->
+    <div class="reason">
+      <div class="reason-num">4</div>
+      <div class="reason-body">
+        <div class="reason-title">The City Council raises the rate every year. <em>You get no vote.</em></div>
+        <div class="reason-text">
+          The measure authorizes the City Council to increase the maximum
+          tax rate annually by resolution — no voter approval needed.
+          The escalation index is whichever is greater: Bay Area CPI
+          or California per-capita income growth.
+          <strong>You voted once in June 2026. After that,
+          the rate goes up automatically, every year,
+          for the next 30+ years.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "We stretched to buy our home in El Cerrito at 7% interest.
+        Now we're being asked to sign up for another 30-year obligation
+        that escalates every year — for a library that won't open
+        until 2032 at the earliest, if it opens at all.
+        <strong>We didn't budget for this. Nobody told us it was coming.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      One 30-year commitment was enough.<br>
+      <em>Vote No on Measure C.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Paid for by No on Measure C. Sources: Griffin Structures ROM Report (Jan. 2026), City of El Cerrito §9212 Impact Report (Feb. 2026), SGC AHSC award records. Mortgage estimate based on $1.2M purchase, 20% down, 7% fixed 30-year rate.
+  </div>
+
+</div>
+</body>
+</html>

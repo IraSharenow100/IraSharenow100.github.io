@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Homeowners Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* cost escalation bars */
+  .escalation {
+    background: #f9f6f0;
+    border: 1px solid #e0d8cc;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin: 4px 0 28px;
+  }
+
+  .esc-title {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #1b2a4a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .esc-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .esc-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+    width: 52px;
+    flex-shrink: 0;
+  }
+
+  .esc-bar-wrap {
+    flex: 1;
+    background: #e8e2d6;
+    border-radius: 2px;
+    height: 20px;
+  }
+
+  .esc-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: #1b2a4a;
+  }
+
+  .esc-bar.red { background: #c8202a; }
+
+  .esc-val {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1b2a4a;
+    width: 52px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .esc-val.red { color: #c8202a; }
+
+  .esc-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* tax pile-on table */
+  .pileup {
+    margin: 4px 0 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .pileup-head {
+    background: #1b2a4a;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 8px 14px;
+  }
+
+  .pileup-head-cell {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #b0c4de;
+  }
+
+  .pileup-head-cell:last-child { text-align: right; }
+
+  .pileup-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 9px 14px;
+    border-top: 0.5px solid #e8e2d6;
+    align-items: center;
+  }
+
+  .pileup-row:nth-child(even) { background: #fafafa; }
+
+  .pileup-row.total {
+    background: #fff8e6;
+    border-top: 2px solid #e8b84b;
+  }
+
+  .pileup-name {
+    font-size: 13.5px;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+
+  .pileup-name span {
+    font-size: 11.5px;
+    color: #888;
+    display: block;
+  }
+
+  .pileup-cost {
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-align: right;
+    color: #c8202a;
+  }
+
+  .pileup-row.total .pileup-name {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .pileup-row.total .pileup-cost {
+    font-size: 16px;
+  }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why homeowners are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">A 30-year tax that starts in December 2026 — and rises every year.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">$16,000+</div>
+    <div class="lead-stat-label">
+      <strong>What a typical 1,700 sq ft El Cerrito home pays over the life of this tax.</strong><br>
+      It starts at $289 in Year 1 and escalates every year for 30+ years.
+      That is not a library fee. That is a mortgage-sized commitment.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Reason 1: lifetime cost with escalation -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">The tax rises every year. <em>There is no cap on how high it goes.</em></div>
+        <div class="reason-text">
+          Measure C escalates annually by whichever is greater: Bay Area CPI
+          or California per-capita income growth. There is no dollar ceiling.
+          <strong>On a 1,700 sq ft home, Year 1 is $289.
+          By Year 10 it is over $411. By Year 30 it exceeds $900.</strong>
+          Over the life of the tax, a typical homeowner pays more than $16,000 —
+          for a library that may not open until 2032, if ever.
+        </div>
+      </div>
+    </div>
+
+    <div class="escalation">
+      <div class="esc-title">Annual tax — typical 1,700 sq ft home</div>
+      <div class="esc-row">
+        <div class="esc-label">Year 1</div>
+        <div class="esc-bar-wrap"><div class="esc-bar" style="width:32%;"></div></div>
+        <div class="esc-val">$289</div>
+      </div>
+      <div class="esc-row">
+        <div class="esc-label">Year 5</div>
+        <div class="esc-bar-wrap"><div class="esc-bar" style="width:43%;"></div></div>
+        <div class="esc-val">$347</div>
+      </div>
+      <div class="esc-row">
+        <div class="esc-label">Year 10</div>
+        <div class="esc-bar-wrap"><div class="esc-bar" style="width:46%;"></div></div>
+        <div class="esc-val">$411</div>
+      </div>
+      <div class="esc-row">
+        <div class="esc-label">Year 20</div>
+        <div class="esc-bar-wrap"><div class="esc-bar red" style="width:64%;"></div></div>
+        <div class="esc-val red">$578</div>
+      </div>
+      <div class="esc-row">
+        <div class="esc-label">Year 30</div>
+        <div class="esc-bar-wrap"><div class="esc-bar red" style="width:100%;"></div></div>
+        <div class="esc-val red">$912</div>
+      </div>
+      <div class="esc-note">Escalation estimated at ~3.5%/year (approximate recent Bay Area CPI). Actual rate adjusts annually — it can only go up.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 2: tax pile-on -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">Measure C is not the only new tax <em>on this ballot.</em></div>
+        <div class="reason-text">
+          El Cerrito homeowners face a stack of new taxes across both
+          the June and November 2026 ballots — a healthcare sales tax,
+          a regional transit measure covering BART and buses, a community
+          college bond, a school district measure, and Measure C.
+          <strong>The cumulative burden matters —
+          even if each measure looks manageable in isolation.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="pileup">
+      <div class="pileup-head">
+        <div class="pileup-head-cell">New taxes — 2026 ballots</div>
+        <div class="pileup-head-cell">Est. annual cost</div>
+      </div>
+      <div class="pileup-row">
+        <div class="pileup-name">Measure C — Library parcel tax
+          <span>June 2026 · $0.17/sq ft, escalating annually for 30+ years</span>
+        </div>
+        <div class="pileup-cost">~$289+</div>
+      </div>
+      <div class="pileup-row">
+        <div class="pileup-name">Contra Costa County healthcare sales tax
+          <span>June 2026 · 0.625¢ increase · est. $20K taxable spending</span>
+        </div>
+        <div class="pileup-cost">~$125</div>
+      </div>
+      <div class="pileup-row">
+        <div class="pileup-name">Regional transit measure (BART/buses/ferries)
+          <span>November 2026 · 0.5¢ sales tax · SB 63 five-county measure</span>
+        </div>
+        <div class="pileup-cost">~$100</div>
+      </div>
+      <div class="pileup-row">
+        <div class="pileup-name">Contra Costa Community College bond
+          <span>$920M bond · ~$10 per $100K assessed value · $1.2M home</span>
+        </div>
+        <div class="pileup-cost">~$120</div>
+      </div>
+      <div class="pileup-row">
+        <div class="pileup-name">WCCUSD school measure
+          <span>June 2026 · amount TBD</span>
+        </div>
+        <div class="pileup-cost">TBD</div>
+      </div>
+      <div class="pileup-row total">
+        <div class="pileup-name">Combined new tax burden (known measures)</div>
+        <div class="pileup-cost">$634+/yr</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: no guarantee -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">You pay for years — <em>with no guarantee a library gets built.</em></div>
+        <div class="reason-text">
+          Construction cannot begin until a private developer wins a
+          competitive state housing grant for a site it has
+          <strong>never applied for.</strong> The same developer applied for a
+          nearby parcel and was rejected in the most recent round.
+          Tax collection starts December 2026. The earliest realistic
+          opening is 2032. If the grant is denied, your taxes are
+          collected and the library is not built — no refund, no recourse.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">After Year 10, the risk shifts to the General Fund — and to you</div>
+      <div class="callout-text">
+        The parcel tax covers library operating costs for only the first
+        10 years after opening. After that, the city's General Fund
+        absorbs up to <strong>$797,000 per year in operating costs</strong>
+        — on top of the bond payments still being collected from homeowners.
+        The tax bill doesn't shrink after Year 10. The city's obligations grow.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "I've owned my home in El Cerrito for 15 years.
+        I'm already paying some of the highest property taxes in the state.
+        <strong>A 30-year escalating tax for a library that may never open —
+        on top of two other new taxes on the same ballot —
+        is too much to ask.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      Your home. Your taxes. <em>Your vote.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Paid for by No on Measure C. Sources: Griffin Structures ROM Report (Jan. 2026), City of El Cerrito §9212 Impact Report (Feb. 2026), Contra Costa County, KALW/Local News Matters (Jan. 2026).
+  </div>
+
+</div>
+</body>
+</html>

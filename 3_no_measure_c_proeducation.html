@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Pro-Education People Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .reason {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: #1b2a4a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2a4a;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .reason-title em { color: #c8202a; font-style: normal; }
+
+  .reason-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .reason-text strong { color: #1a1a1a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  /* what $289 buys */
+  .money-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 4px 0 28px;
+  }
+
+  .money-card {
+    border: 1px solid #e0d8cc;
+    border-radius: 4px;
+    padding: 13px 15px;
+    background: #fafaf8;
+  }
+
+  .money-card-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1b2a4a;
+    font-family: Georgia, serif;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .money-card-label {
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .money-vs {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 2px 0;
+  }
+
+  .money-tax {
+    grid-column: 1 / -1;
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-radius: 4px;
+    padding: 13px 15px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .money-tax-val {
+    font-size: 28px;
+    font-weight: 700;
+    color: #c8202a;
+    font-family: Georgia, serif;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .money-tax-label {
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 1.45;
+  }
+
+  .money-tax-label strong { color: #1a1a1a; }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why pro-education people are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">Supporting education means funding things that actually reach students.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">6 years</div>
+    <div class="lead-stat-label">
+      <strong>How long families pay before the library opens — if it opens at all.</strong><br>
+      Tax collection begins December 2026. The most optimistic opening date is 2032.
+      That is six years of payments for a building that doesn't exist yet.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Reason 1: money out of education budgets -->
+    <div class="reason" style="margin-top:28px;">
+      <div class="reason-num">1</div>
+      <div class="reason-body">
+        <div class="reason-title">Every dollar in parcel taxes is a dollar <em>not spent on education.</em></div>
+        <div class="reason-text">
+          Measure C starts at $289 per year for a typical home and rises every year.
+          That is money El Cerrito families can no longer direct toward
+          tutoring, books, after-school enrichment, music lessons, or school fundraisers.
+          <strong>The tax is mandatory and escalating. The educational benefit
+          is uncertain and years away.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="money-grid">
+      <div class="money-card">
+        <div class="money-card-val">~$289</div>
+        <div class="money-card-label">Year 1 annual parcel tax on a typical 1,700 sq ft home</div>
+      </div>
+      <div class="money-card">
+        <div class="money-card-val">~$411</div>
+        <div class="money-card-label">Annual tax by Year 10 — escalates every year</div>
+      </div>
+      <div class="money-vs">versus what that same money could fund</div>
+      <div class="money-card">
+        <div class="money-card-val">4–5 sessions</div>
+        <div class="money-card-label">Of private tutoring at Bay Area rates (~$60–80/hr) — helping a student now</div>
+      </div>
+      <div class="money-card">
+        <div class="money-card-val">1–2 months</div>
+        <div class="money-card-label">Of after-school enrichment programs ($150–400/month in the Bay Area)</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 2: library doesn't help current students -->
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <div class="reason-body">
+        <div class="reason-title">The library cannot help students <em>who have already graduated.</em></div>
+        <div class="reason-text">
+          The new library will not open until 2032 at the earliest —
+          and only if a competitive state grant is awarded to a developer
+          who has <strong>never applied for that grant on this site.</strong>
+          Any student currently in 5th grade or above will be in high school
+          or beyond before the library opens.
+          The children who need it most right now will be gone.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-hed">The current library is open now — and serves students today</div>
+      <div class="callout-text">
+        The existing El Cerrito Library is open 46 hours per week.
+        After school, it is already packed with children doing homework.
+        <strong>A No vote does not close the current library.</strong>
+        It rejects a 30-year financial commitment to a construction project
+        that may not be built — while students need resources today.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 3: RHNA / housing / school funding -->
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <div class="reason-body">
+        <div class="reason-title">El Cerrito's stalled housing pipeline <em>threatens school funding.</em></div>
+        <div class="reason-text">
+          California school funding follows enrollment. Enrollment follows
+          families. Families follow housing. El Cerrito has permitted
+          <strong>only about 7% of its state-mandated housing obligation</strong>
+          through 2024 — one of the lowest rates in the county.
+          The TOD project that the library depends on has itself stalled.
+          Failing to build housing means fewer families, declining
+          enrollment, and less funding for El Cerrito schools.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        El Cerrito's 6th Cycle state housing mandate: <strong>1,391 units by 2031.</strong>
+        Units permitted through 2024: roughly <strong>98 — about 7% of the obligation.</strong>
+        The library site (Parcel C West) cannot be built until the developer
+        wins a grant it has never applied for. Meanwhile, the housing
+        pipeline that determines school enrollment remains nearly at a standstill.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reason 4: financial risk -->
+    <div class="reason">
+      <div class="reason-num">4</div>
+      <div class="reason-body">
+        <div class="reason-title">A failed project wastes money <em>that could have funded education.</em></div>
+        <div class="reason-text">
+          Independent analysis shows the tax revenue is insufficient to cover
+          bond payments and operating costs at investment-grade borrowing rates.
+          The ballot measure itself caps the debt service ratio at a level
+          that guarantees junk bond financing.
+          <strong>A project that fails mid-construction leaves El Cerrito
+          with a tax bill, no library, and no educational benefit —
+          for 30 years.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "I support education. That's exactly why I'm voting No.
+        <strong>Taking $289 a year out of family budgets — rising every year,
+        for a building that may never open — does not help a single
+        child learn to read today.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      Real education investment <em>reaches students now.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Paid for by No on Measure C. Sources: Griffin Structures ROM Report (Jan. 2026), City of El Cerrito §9212 Impact Report (Feb. 2026), California HCD APR data, SGC AHSC award records.
+  </div>
+
+</div>
+</body>
+</html>

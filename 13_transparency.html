@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why People Who Support Transparency Are Voting No on Measure C</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .page {
+    background: #fff;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+  }
+
+  .header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    border-bottom: 6px solid #c8202a;
+  }
+
+  .ballot-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8fa8c8;
+    margin-bottom: 14px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .headline em { color: #e8b84b; font-style: normal; }
+
+  .subheadline {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #b0c4de;
+    font-style: italic;
+  }
+
+  .vote-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #c8202a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+  }
+
+  .lead-stat {
+    background: #fdf6e3;
+    border-left: 5px solid #e8b84b;
+    margin: 32px 40px 0;
+    padding: 18px 22px;
+  }
+
+  .lead-stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #c8202a;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .lead-stat-label {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .lead-stat-label strong { color: #1a1a1a; }
+
+  .content { padding: 24px 40px 32px; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e2d6;
+    margin: 4px 0 28px;
+  }
+
+  .body-text {
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .body-text strong { color: #1a1a1a; }
+
+  /* documented record timeline */
+  .record {
+    margin: 4px 0 28px;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .record::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: #c8d4e4;
+  }
+
+  .record-item {
+    position: relative;
+    margin-bottom: 18px;
+    padding-left: 20px;
+  }
+
+  .record-item::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #c8202a;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #c8202a;
+  }
+
+  .record-year {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 3px;
+  }
+
+  .record-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1b2a4a;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .record-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .record-text strong { color: #1a1a1a; }
+
+  /* PRA denial table */
+  .pra-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 28px;
+    font-size: 13px;
+  }
+
+  .pra-table th {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 7px 12px;
+    background: #1b2a4a;
+    color: #b0c4de;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .pra-table th:last-child { border-right: none; }
+
+  .pra-table td {
+    padding: 8px 12px;
+    border-bottom: 0.5px solid #e8e2d6;
+    color: #2a2a2a;
+    vertical-align: top;
+  }
+
+  .pra-table tr:nth-child(even) td { background: #fafafa; }
+
+  .pra-table .denied {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    color: #c8202a;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* callout */
+  .callout {
+    background: #fff0f0;
+    border: 1px solid #f5c0c0;
+    border-left: 4px solid #c8202a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .callout-hed {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c8202a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 13.5px;
+    color: #3a3a3a;
+    line-height: 1.55;
+  }
+
+  .callout-text strong { color: #1a1a1a; }
+
+  /* info box */
+  .info-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .info-box-text {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .info-box-text strong { color: #1b2a4a; }
+
+  /* pull quote */
+  .highlight-box {
+    background: #f0f4f9;
+    border: 1px solid #c8d4e4;
+    border-left: 4px solid #1b2a4a;
+    padding: 14px 18px;
+    margin: 4px 0 28px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .highlight-box-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .highlight-box-text strong { font-style: normal; color: #c8202a; }
+
+  /* footer */
+  .footer {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  .footer-cta em { color: #e8b84b; font-style: normal; }
+
+  .vote-box {
+    flex-shrink: 0;
+    text-align: center;
+    background: #c8202a;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  .vote-box-top {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-bottom: 2px;
+  }
+
+  .vote-box-no {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .vote-box-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffcccc;
+    margin-top: 2px;
+    font-family: Arial, sans-serif;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    padding: 10px 40px;
+    font-family: Arial, sans-serif;
+    background: #f5f0e8;
+    line-height: 1.5;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="ballot-label">El Cerrito &nbsp;|&nbsp; June 2, 2026 Ballot &nbsp;|&nbsp; Library Parcel Tax</div>
+    <div class="vote-badge">Vote No</div>
+    <div class="headline">Why people who support transparency are voting<br><em>No on Measure&nbsp;C</em></div>
+    <div class="subheadline">El Cerrito has a documented, decade-long pattern of hiding costs from voters on this exact project.</div>
+  </div>
+
+  <div class="lead-stat" style="margin-top:32px;">
+    <div class="lead-stat-number">4 times</div>
+    <div class="lead-stat-label">
+      <strong>El Cerrito has concealed, withheld, or refused to disclose information about library costs and financing — across 2014, 2016, 2023, and 2026.</strong><br>
+      This is not a pattern of mistakes. It is a pattern of choices.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="body-text" style="margin-top:28px;">
+      The Yes campaign promotes "independent citizen oversight" and "mandatory financial audits"
+      as accountability safeguards. But voters should evaluate those promises in light of what
+      the city has actually done — not what it says it will do.
+    </div>
+
+    <!-- Documented record -->
+    <div class="record">
+
+      <div class="record-item">
+        <div class="record-year">2014</div>
+        <div class="record-title">City deliberately hid that a ballot measure would double the sales tax</div>
+        <div class="record-text">
+          Documents and emails obtained through the state Public Records Act revealed
+          that city officials <strong>deliberately omitted from the 75-word ballot language
+          that Measure R would double El Cerrito's sales tax</strong> to one of the highest
+          rates in California. The city's own financial advisor confirmed the omission.
+          The East Bay Times called it "a deceptive campaign."
+        </div>
+      </div>
+
+      <div class="record-item">
+        <div class="record-year">2016</div>
+        <div class="record-title">Financial Advisory Board warned council — council ignored it</div>
+        <div class="record-text">
+          The city's own Financial Advisory Board voted 3–1 to require the library bond
+          ballot language to disclose the tax consequences to voters.
+          <strong>The City Council ignored the recommendation.</strong>
+          The ballot language for Measure B contained no mention that it was a tax.
+          FAB chair Rich Bartke said: "We wanted to make it more open and transparent
+          about what's going on, but the council didn't adopt any word change."
+          Measure B failed — but the conduct did not change.
+        </div>
+      </div>
+
+      <div class="record-item">
+        <div class="record-year">2023</div>
+        <div class="record-title">Three Public Records Act requests denied before a key Council presentation</div>
+        <div class="record-text">
+          Before the November 21, 2023 Council presentation, a resident requested three
+          taxpayer-funded reports. <strong>All three were denied.</strong>
+          The October 2023 survey results — cited in city presentations but never released —
+          remain undisclosed to this day. The city told voters what the surveys showed
+          when the numbers were favorable; it withheld them when they were not.
+        </div>
+      </div>
+
+      <div class="record-item">
+        <div class="record-year">2026</div>
+        <div class="record-title">City refused to release data supporting its own revenue projection</div>
+        <div class="record-text">
+          The §9212 Impact Report claims annual maximum tax revenue of $3,156,019
+          based on 18,458,937 taxable square feet.
+          <strong>A Public Records Act request for the parcel-level data
+          supporting that figure was denied.</strong>
+          Independent analysis using the WCCUSD Measure T roll —
+          the best available public proxy — yields $2,699,075.
+          The $457,000 gap cannot be verified because the city refuses to show its work.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRA denial table -->
+    <table class="pra-table">
+      <thead>
+        <tr>
+          <th>Document requested</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>May 2023 library survey report</td>
+          <td class="denied">Denied</td>
+        </tr>
+        <tr>
+          <td>October 2023 library survey report</td>
+          <td class="denied">Denied</td>
+        </tr>
+        <tr>
+          <td>Financial analysis of the library project</td>
+          <td class="denied">Denied</td>
+        </tr>
+        <tr>
+          <td>Parcel-level data supporting $3,156,019 revenue figure (2026)</td>
+          <td class="denied">Denied</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="callout">
+      <div class="callout-hed">The cost jumped 75% in nine months — no explanation was given</div>
+      <div class="callout-text">
+        The 2025 petition cited $21.2 million. The January 2026 Griffin Structures estimate
+        is $37.2 million. <strong>That is a $16 million increase before design began,
+        before contracts were signed, and before ground was broken.</strong>
+        No public explanation was provided for why the cost increased so dramatically
+        in under a year. Voters are being asked to approve a 30-year tax
+        based on numbers that changed by 75% with no accounting.
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-text">
+        The city's own 2023 polling — which it paid for and then withheld —
+        showed that the statement <strong>"the money will not be spent as promised"</strong>
+        was the single most persuasive concern among likely voters, scoring 0.97 out of 2.0.
+        The city knew voters distrusted how the money would be spent.
+        It suppressed the full survey results and put the measure on the ballot anyway.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-text">
+        "I asked for the financial analysis. Denied.
+        I asked for the survey results. Denied.
+        I asked for the revenue calculation. Denied.
+        <strong>They want me to trust them with 30 years of my tax dollars
+        while refusing to show me their work.</strong>"
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      Transparency is not a promise. <em>It's a record.</em><br>
+      <span style="font-size:13px;font-weight:400;color:#b0c4de;">June 2, 2026 &nbsp;·&nbsp; Return your ballot by June 2</span>
+    </div>
+    <div class="vote-box">
+      <div class="vote-box-top">Mark</div>
+      <div class="vote-box-no">NO</div>
+      <div class="vote-box-label">on Measure C</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Sources: East Bay Times (Oct. 2014, Oct. 2016), City of El Cerrito PRA correspondence (Nov. 2023, 2026), City Council presentation (Nov. 21, 2023), Godbe Research poll (Nov. 2023), Griffin Structures ROM Report (Jan. 2026), City of El Cerrito §9212 Impact Report (Feb. 2026). WCCUSD Measure T parcel roll analysis conducted independently.
+  </div>
+
+</div>
+</body>
+</html>
