@@ -29,32 +29,34 @@ rejected in Round 9 (2024).
 **Tax revenue is insufficient to cover both debt service and operating costs**
 Independent financial analysis shows the parcel tax revenue cannot support
 investment-grade borrowing. The ballot language caps the debt service coverage
-ratio at 1.15x, which corresponds to junk bond status. This increases borrowing
-costs and project risk.
+ratio at 1.15x, which corresponds to junk bond status.
 
 **The earliest realistic opening date is 2032**
 Tax collection begins December 2026. The grant process, design, and construction
-timeline push the earliest possible opening to approximately 2032 — five or more
-years of tax payments before the library opens.
+timeline push the earliest possible opening to approximately 2032.
 
 ---
 
-### Project Timeline
+### One-Page Analyses by Audience
 
-| Milestone | Date |
-|---|---|
-| Tax collection begins | December 2026 |
-| Grant application and award process | 2027–2029 |
-| Construction could begin | 2030 |
-| Library opens (best case) | 2032 |
+These analyses examine Measure C from the perspective of different community
+stakeholders. Each is based on publicly available documents including the
+Griffin Structures ROM estimate, City of El Cerrito budget records, and
+SGC AHSC award data.
 
----
-
-### Analysis Documents
-
-Independent one-page analyses for different community audiences are available
-covering fiscal impact, timeline risk, financing structure, and comparisons
-with other California library projects.
+- [Pro-Library Voters](https://irasharenow100.github.io/1_no_measure_c_prolibrary_v4.html)
+- [Parents of School-Age Children](https://irasharenow100.github.io/2_no_measure_c_parents.html)
+- [Pro-Education People](https://irasharenow100.github.io/3_no_measure_c_proeducation.html)
+- [Renters](https://irasharenow100.github.io/4_renters.html)
+- [Homeowners](https://irasharenow100.github.io/5_homeowners.html)
+- [New and Recent Homebuyers](https://irasharenow100.github.io/6_new_homebuyers.html)
+- [Longtime Residents](https://irasharenow100.github.io/7_longtime_residents.html)
+- [Seniors](https://irasharenow100.github.io/8_seniors.html)
+- [Progressives and Housing Advocates](https://irasharenow100.github.io/9_progressives_housing.html)
+- [Fiscal Conservatives](https://irasharenow100.github.io/10_fiscal_conservatives.html)
+- [Small Business Owners](https://irasharenow100.github.io/11_small_business.html)
+- [Finance Nerds — DSCR Analysis](https://irasharenow100.github.io/12_finance_nerds_dscr.html)
+- [Transparency and Accountability](https://irasharenow100.github.io/13_transparency.html)
 
 ---
 
